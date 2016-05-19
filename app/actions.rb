@@ -11,10 +11,6 @@
     erb :index
   end
 
-  get '/city/:city' do
-    erb :'city/categories'
-  end
-
   get '/users/new' do
     @user = User.new
     erb :'users/new'
@@ -50,4 +46,15 @@
   get '/users/logout' do
     session.clear
     redirect '/'
+  end
+
+  get '/city/:city' do
+    @current_city = City.new(name: params[:city])
+    erb :'city/categories'
+  end
+
+  get '/city/:city/:category' do
+    @current_city = City.new(name: params[:city])
+    @current_category = Category.new(name: params[:category])
+    erb :'city/category'
   end
