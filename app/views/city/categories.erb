@@ -11,19 +11,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="/">Share your spot</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="/users/login">Login</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="/users/new">Signup</a>
                     </li>
                 </ul>
             </div>
@@ -32,125 +32,146 @@
         <!-- /.container -->
     </nav>
 
-    <!-- Page Content -->
-    <div class="container">
-
-        <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Page Heading
-                    <small>Secondary Text</small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <br>
-                    
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                              
-            </div>
-        </div>
-        <br>
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-              
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-       
-            </div>
-        </div>
-        <!-- /.row -->
-        <hr>
-
-
-        
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category1" class="category">
+                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Nicholas Cage
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category2" class="category">
+                        <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Michelle is Awesome!
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category3" class="category">
+                        <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category4" class="category">
+                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category5" class="category">
+                        <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                 <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category6" class="category">
+                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                 <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category7" class="category">
+                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                 <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category8" class="category">
+                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="/city/<%=@current_city.name%>/category9" class="category">
+                        <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
+                        <div class="category-caption">
+                            <div class="category-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <!-- /.row -->
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+        </div>
+    </section>
 
 
-
-
-
-
-<ul>
-  <a href="/city/<%=@current_city.name%>/category1"><li>category1</li></a>
-  <a href="/city/<%=@current_city.name%>/category2"><li>category2</li></a>
-  <a href="/city/<%=@current_city.name%>/category3"><li>category3</li></a>
-  <a href="/city/<%=@current_city.name%>/category4"><li>category4</li></a>
-  <a href="/city/<%=@current_city.name%>/category5"><li>category5</li></a>
-  <a href="/city/<%=@current_city.name%>/category6"><li>category6</li></a>
-  <a href="/city/<%=@current_city.name%>/category7"><li>category7</li></a>
-  <a href="/city/<%=@current_city.name%>/category8"><li>category8</li></a>
-  <a href="/city/<%=@current_city.name%>/category9"><li>category9</li></a>
-</ul>
