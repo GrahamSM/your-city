@@ -1,10 +1,9 @@
 # Homepage (Root path)
-require 'pry'
   enable :sessions
 
   helpers do
     def current_user
-       User.find(session[:user_id]) if session[:user_id]
+       User.find_by(id: session[:user_id])
     end
   end
 
@@ -40,12 +39,10 @@ require 'pry'
 
   post '/users/login' do
     @user = User.find_by(username: params[:username])
-
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect '/'
     else
-      binding.pry
       redirect '/users/login'
     end
   end
