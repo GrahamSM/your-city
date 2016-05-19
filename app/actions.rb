@@ -54,7 +54,7 @@
   end
 
   get '/city/:city/:category' do
-    @current_city = City.new(name: params[:city])
+    @current_city = City.where(name: params[:city]).first
     @current_category = Category.new(name: params[:category])
     erb :'city/category'
   end

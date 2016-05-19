@@ -1,0 +1,17 @@
+<h1><%= @current_category.name %></h1>
+
+<div id="map"></div>
+    <script>
+      function initMap() {
+        var latitude = parseFloat('<%= @current_city.latitude %>')
+        var longitude = (parseFloat('<%= @current_city.longitude %>'))*(-1)
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: latitude, lng: longitude},
+          zoom: 10
+        });
+      }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+  async defer>
+</script>

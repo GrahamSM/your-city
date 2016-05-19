@@ -25,8 +25,7 @@ end
 
 desc "Imports a CSV file into an ActiveRecord table"
 task "db:populate" do
-  system "rake db:drop && rake db:create && rake db:migrate"
-  csv_text = File.read('cities.csv')
-  csv_data = csv_text.split(',')
-  City.create!(name: csv_data[0], latitude: csv_data[1], longitude: csv_data[2])
+  CSV.foreach('cities.csv') do |row|
+    City.create!(name: row[0], latitude: row[1].strip, longitude: row[2].strip)
+  end
 end
