@@ -1,4 +1,5 @@
 .spot-form {
+  position:fixed;
   margin-top: 80px;
   width: 400px;
   margin-left: 70%;

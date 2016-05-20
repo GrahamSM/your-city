@@ -29,6 +29,8 @@
                 <p>
                   <%= spot.description %>
                   <div class="wrap">
+                    <!-- spot image -->
+                    <img src=/images/"<% spot.id %>_spot_image.jpg"/>
                     <div class="vote up">
                       <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
                         <button type="submit">
@@ -90,8 +92,6 @@ $(function(){
 });
 </script>
 
-
-
 <script>
     function initMap() {
     var latitude = parseFloat('<%= @current_city.latitude %>')
@@ -103,4 +103,5 @@ $(function(){
       });
     }
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>

@@ -36,6 +36,11 @@
   post '/city/spot/new' do
     @spot = Spot.new(title: params[:title], location: params[:location],
     description: params[:description])
+    @filename = "#{@spot.id}_spot_image.jpg"
+    file = params[:file][:tempfile]
+    File.open("./public/images/#{@filename}",'wb',) do |f|
+      f.write(file.read)
+    end
   end
 
   get '/users/login' do
