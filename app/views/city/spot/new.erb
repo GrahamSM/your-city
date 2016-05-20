@@ -1,11 +1,4 @@
-<!-- name
-address
-description
-category >>> MAKE this a drop down
-vibes assciated with it >>> MAKE this clicable and locked like bootstrap theme
-img/video >>> MAKE this a drag and drop or something!!!
-ATTRIBUTE >>> disabled = "disabled"
--->
+
 <div class="spot-form">
   <div class="fluid-container">
     <form class ="form-group row" method="post" action="/city/spot/new" enctype="multipart/form-data">
@@ -15,7 +8,7 @@ ATTRIBUTE >>> disabled = "disabled"
       </div>
       <div class="col-sm-10">
          <label>Address:</label>
-         <input class="form-control" type="text" name="address" value="<%@spot.address%>" placeholder="Address">
+         <input class="form-control" type="text" name="location" value="<%@spot.location%>" placeholder="Address">
       </div>
       <div class="col-sm-10">
          <label>Description:</label>
@@ -36,8 +29,19 @@ ATTRIBUTE >>> disabled = "disabled"
   		  </ul>
   		</div>
       <div class="col-sm-10">
-        <label class="control-label">Select File</label>
+        <label class="control-label">Upload Image</label>
         <input type="file" name="file">
+      </div>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary">
+        <input type="checkbox" autocomplete="off"> Mood1
+     </label>
+     <label class="btn btn-primary">
+       <input type="checkbox" autocomplete="off"> Mood2
+     </label>
+     <label class="btn btn-primary">
+       <input type="checkbox" autocomplete="off"> Mood3
+     </label>
       </div>
       </div>
       <div class="form-group row">
@@ -48,98 +52,3 @@ ATTRIBUTE >>> disabled = "disabled"
     </form>
   </div>
 </div>
-
-<script>
-    function initMap() {
-    var latitude = 43.6532
-    var longitude = -79.3832
-    var mapDiv = document.getElementById('map');
-    var map = new google.maps.Map(mapDiv, {
-      center: {lat: latitude, lng: longitude},
-      zoom: 10
-      });
-    }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-
-
-<!--
-    <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="http://emojipedia-us.s3.amazonaws.com/cache/19/0c/190cf73e8ae41c318e51fa7fe774f047.png" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Mood
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="http://emojipedia-us.s3.amazonaws.com/cache/1e/45/1e451b63aa8edaab9c2fd872aa72588a.png" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Mood
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="http://emojipedia-us.s3.amazonaws.com/cache/56/6c/566c9bb1eb9cee4ad2a8e267e46cff7d.png" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Mood
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Mood
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Mood
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Mood
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section> -->

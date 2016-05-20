@@ -17,7 +17,7 @@
   end
 
   get '/city/spot/new' do
-    @user = Spot.new
+    @spot = Spot.new
     erb :'city/spot/new'
   end
 
@@ -37,9 +37,14 @@
     @spot = Spot.new(title: params[:title], location: params[:location],
     description: params[:description])
     @filename = "#{@spot.id}_spot_image.jpg"
-    file = params[:file][:tempfile]
+    file_name = params["file"][:filename]
     File.open("./public/images/#{@filename}",'wb',) do |f|
-      f.write(file.read)
+      f.write(params["file"][:tempfile].read)
+    end
+    @spot.image = file_name
+    if @spot.save
+    else
+      erb :'city/spot/new'
     end
   end
 
