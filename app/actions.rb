@@ -59,19 +59,19 @@
   end
 
   get '/city/:city' do
-    @current_city = City.new(name: params[:city])
+    @current_city = City.first
     erb :'city/categories'
   end
 
 get '/city/:city/:category' do
-  @current_city = City.where(name: params[:city]).first
-  @current_category = Category.find_by(name: params[:category]) ##TODO:Hardcode these into the database!!
+  @current_city = City.first
+  @current_category = Category.first ##TODO:Hardcode these into the database!!
   redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
 end
 
 get '/city' do
-  @current_city = City.find_by(name: params[:city])
-  @current_category = Category.find_by(name: params[:category])
+  @current_city = City.first
+  @current_category = Category.first
   erb :'city/category'
 end
 
