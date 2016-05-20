@@ -1,3 +1,45 @@
+/*HOME PAGE*/
+#home-title{
+  margin-left: 100px;
+}
+
+#city-list-home{
+  float:right;
+  margin-right: 200px;
+  list-style: none;
+  margin-top: 125px;
+}
+
+#city-item{
+  margin-bottom: 20px;
+  border: solid;
+  border-color: #ff5500;
+  border-radius: 1px;
+  width: 250px;
+  height: 50px;
+  text-align: center;
+  padding-top: 12px;
+  color:black;
+  background-color: #ffe0cc;
+}
+
+#city-item:hover{
+  background-color: #ff5500;
+  color:white
+}
+
+.fluid-container {
+  margin: 0;
+}
+
+#home{
+  background-image: url("http://www.yurtopic.com/travel/destinations/images/thailand-places/Aerial-View-Of-Bangkok2.jpg");
+}
+
+
+
+/*END HOME PAGE*/
+
 .spot-form {
   position:fixed;
   margin-top: 80px;
