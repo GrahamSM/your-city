@@ -22,13 +22,14 @@
 }
 
 #chill-spot-list{
+
 }
 
 #chill-spot{
   float: right;
   list-style-type: none;
   border: 0.5px;
-  width: 890px;
+  width: 600px;
   max-height: 250px;
   border-style: solid;
   border-color: black;
