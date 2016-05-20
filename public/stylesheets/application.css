@@ -30,7 +30,7 @@
   list-style-type: none;
   border: 0.5px;
   width: 600px;
-  max-height: 250px;
+  max-height: 350px;
   border-style: solid;
   border-color: black;
   padding-bottom: 10px;
@@ -46,7 +46,7 @@
 
 
 
-#vibe-container{
+#mood-container{
 
 }
 

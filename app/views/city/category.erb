@@ -26,27 +26,30 @@
               <li id="chill-spot">
                 <h3><%= spot.title %></h3>
                 <h5><%= spot.location %></h5>
-                <p><%= spot.description %></p>
-                <div class="wrap">
-                  <div class="vote up">
-                    <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
-                      <button type="submit">
-                        <i class="fa fa-angle-up"></i>
-                      </button>
-                    </form>
+                <p>
+                  <%= spot.description %>
+                  <div class="wrap">
+                    <div class="vote up">
+                      <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
+                        <button type="submit">
+                          <i class="fa fa-angle-up"></i>
+                        </button>
+                      </form>
+                    </div>
+                    <div class="stat">
+                      <span class="score"><%=spot.num_votes || 0%>
+                      </span>
+                    </div>
+                    <div class="vote down">
+                      <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
+                        <button type="submit">
+                          <i class="fa fa-angle-down"></i>
+                        </button>
+                      </form>
+                    </div>
                   </div>
-                  <div class="stat">
-                    <span class="score"><%=spot.num_votes || 0%>
-                    </span>
-                  </div>
-                  <div class="vote down">
-                    <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
-                      <button type="submit">
-                        <i class="fa fa-angle-down"></i>
-                      </button>
-                    </form>
-                  </div>
-                </div>
+                </p>
+
               </li>
             <% end %>
           <% end %>
