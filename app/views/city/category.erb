@@ -1,9 +1,15 @@
+<br>
+<br>
+<br>
+
 <div id="parent-container" class="container-fluid">
   <div class="row" id="parent-row">
     <div class="col-md-6" id="map"></div>
     <div class="col-md-6">
       <div class="row">
+
         <div class="row" id = "mood-selectors">
+
           <div class="col-md-2 col-md-offset-1" id = "mood-button">
             Vibe1
           </div>
@@ -20,6 +26,7 @@
             Vibe5
           </div>
         </div>
+
         <div class = "row">
           <div id="container-grid">
             <ul id="chill-spot-list">
@@ -34,6 +41,18 @@
                       <span class="label label-default">Vibe Selected</span>
                       <span class="label label-default">Vibe Selected 2</span>
                       <span class="label label-default">Vibe Selected 3</span>
+                      <br>
+
+
+                  <img alt="Snippet" height="32" src="city/img/portfolio/1.jpg"  /> 
+                  <img alt="Snippet" height="32" src="city/img/portfolio/2.jpg"  /> 
+                  <img alt="Snippet" height="32" src="city/img/portfolio/3.jpg"  /> 
+
+
+                     <!-- PLACEHOLDER FOR IMAGES ONCE THEY ARE CREATED IN PUBLIC/IMG/ AND THE UPLOADED SPOT IMAGE FROM USER WILL BE IN THERE WITH AN ID. IN THE BELOW EXAMPLE, IT IS GIVING EXAMPLE OF IMAGE FROM: 
+                     A = #{SPOT.ID}_SPOT_PHOTO.JPG CODE CRAP
+                         <p><img src="/public/images/a">  -->
+
                       <div class="wrap">
                         <div class="vote up">
                           <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
