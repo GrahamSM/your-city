@@ -80,6 +80,14 @@ get '/city' do
   erb :'city/category'
 end
 
+get '/city_data' do
+  @current_city = City.first
+  @current_category = Category.first
+  @current_spots = @current_city.spots
+  my_hash = {city: @current_city, category: @current_category, spots: @current_spots}
+  my_data = my_hash.to_json
+end
+
 post '/:city/:category/upvote/spot/:id' do
   @current_spot = Spot.find_by(id: params[:id])
   if @current_spot.num_votes
