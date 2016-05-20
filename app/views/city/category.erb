@@ -30,6 +30,10 @@
                     <h5><%= spot.location %></h5>
                     <p>
                       <%= spot.description %>
+
+                      <span class="label label-default">Vibe Selected</span>
+                      <span class="label label-default">Vibe Selected 2</span>
+                      <span class="label label-default">Vibe Selected 3</span>
                       <div class="wrap">
                         <div class="vote up">
                           <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
