@@ -16,6 +16,11 @@
     erb :'users/new'
   end
 
+  get '/city/spot/new' do
+    @user = Spot.new
+    erb :'city/spot/new'
+  end
+
   post '/users/new' do
     @user = User.new(username: params[:username], email: params[:email],
     password: params[:password],
@@ -26,6 +31,11 @@
     else
       redirect '/users/new'
     end
+  end
+
+  post '/city/spot/new' do
+    @spot = Spot.new(title: params[:title], location: params[:location],
+    description: params[:description])
   end
 
   get '/users/login' do
