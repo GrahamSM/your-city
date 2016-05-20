@@ -30,7 +30,7 @@ task "db:populate" do
   end
 
   10.times do |i|
-    City.first.spots << Spot.create!(title: Faker::Company.name, location: Faker::StarWars.planet, description: Faker::Hacker.say_something_smart)
+    City.first.spots << Spot.create!(title: Faker::Company.name, location: Faker::StarWars.planet, description: Faker::Hacker.say_something_smart, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
   end
 
   9.times do |i|
@@ -40,7 +40,6 @@ task "db:populate" do
   10.times do |i|
     User.create!(username: Faker::Internet.user_name, password: Faker::Internet.password(10), email: Faker::Internet.safe_email)
   end
-
 
   5.times do |i|
     Vibe.create!(label: Faker::Beer.hop, num_votes: 0)
