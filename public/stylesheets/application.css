@@ -36,9 +36,6 @@
 #home{
   background-image: url("http://www.yurtopic.com/travel/destinations/images/thailand-places/Aerial-View-Of-Bangkok2.jpg");
 }
-
-
-
 /*END HOME PAGE*/
 
 .spot-form {
@@ -56,12 +53,9 @@
     border-radius: 5px;
     margin-right: 10px;
     height: 60%;
+    padding-top: 1000px;
 }
 
-#map{
-  padding-top: 1000px;
-  width: 40%;
-}
 
 
 #floating-panel-new {
@@ -121,6 +115,9 @@
   margin: 1px;
 }
 
+#row-new-spot{
+  margin-top:75px;
+}
 .wrap{
   float:right;
   margin:0;
@@ -255,7 +252,9 @@ img {
  */
 
 
-
+#category-grid{
+  margin-top:20px;
+}
 
 .section-heading {
     margin-top: 0;
