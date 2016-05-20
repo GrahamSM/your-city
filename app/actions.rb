@@ -65,11 +65,19 @@
 
 get '/city/:city/:category' do
   @current_city = City.where(name: params[:city]).first
-  @current_category = Category.new(name: params[:category])
+  @current_category = Category.find_by(name: params[:category]) ##TODO:Hardcode these into the database!!
   erb :'city/category'
 end
 
 get '/city/:city/category/:category/spot/:id/upvote' do
   @current_spot = Spot.find_by(id: params[:id])
+  if @current_spot.num_votes
+    @current_spot.num_votes += 1
+  else
+    @current_spot.num_votes = 1
+  end
+  @current_category = Category.find_by(name: params[:category])
+  @current_city = City.find_by(name: params[:city])
   binding.pry
+  erb :'city/category'
 end

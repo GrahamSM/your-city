@@ -32,6 +32,9 @@ task "db:populate" do
   CSV.foreach('spots.csv') do |row|
     Spot.create!(title: row[0], location: row[1].strip, description: row[2].strip)
   end
+  CSV.foreach('categories.csv') do |row|
+    Category.create!(name: row[0])
+  end
   all_spots = Spot.all
   all_spots.each do |spot|
     City.first.spots << all_spots
