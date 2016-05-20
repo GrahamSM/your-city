@@ -66,18 +66,41 @@
 get '/city/:city/:category' do
   @current_city = City.where(name: params[:city]).first
   @current_category = Category.find_by(name: params[:category]) ##TODO:Hardcode these into the database!!
+  redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
+end
+
+get '/city' do
+  @current_city = City.find_by(name: params[:city])
+  @current_category = Category.find_by(name: params[:category])
   erb :'city/category'
 end
 
-get '/city/:city/category/:category/spot/:id/upvote' do
+post '/:city/:category/upvote/spot/:id' do
   @current_spot = Spot.find_by(id: params[:id])
   if @current_spot.num_votes
     @current_spot.num_votes += 1
   else
     @current_spot.num_votes = 1
   end
+  @current_spot.save
   @current_category = Category.find_by(name: params[:category])
   @current_city = City.find_by(name: params[:city])
-  binding.pry
+  redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
+end
+
+post '/:city/:category/downvote/spot/:id' do
+  @current_spot = Spot.find_by(id: params[:id])
+  if @current_spot.num_votes
+    @current_spot.num_votes -= 1
+  else
+    @current_spot.num_votes = -1
+  end
+  @current_spot.save
+  @current_category = Category.find_by(name: params[:category])
+  @current_city = City.find_by(name: params[:city])
+  redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
+end
+
+get '/upvote' do
   erb :'city/category'
 end

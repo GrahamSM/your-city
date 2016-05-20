@@ -12,16 +12,22 @@
                 <p><%= spot.description %></p>
                 <div class="wrap">
                   <div class="vote up">
-                    <a href='category/<%=@current_category.name%>/spot/<%=spot.id%>/upvote'>
-                      <i class="fa fa-angle-up"></i>
-                    </a>
+                    <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
+                      <button type="submit">
+                        <i class="fa fa-angle-up"></i>
+                      </button>
+                    </form>
                   </div>
                   <div class="stat">
-                    <span class="score">115
+                    <span class="score"><%=spot.num_votes || 0%>
                     </span>
                   </div>
-                  <div class="vote inactive">
-                    <i class="fa fa-angle-down"></i>
+                  <div class="vote down">
+                    <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
+                      <button type="submit">
+                        <i class="fa fa-angle-down"></i>
+                      </button>
+                    </form>
                   </div>
                 </div>
               </li>
