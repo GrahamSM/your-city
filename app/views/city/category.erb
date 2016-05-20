@@ -1,63 +1,63 @@
 <div id="parent-container" class="container-fluid">
-  <div class="row" id="parent-row">
+  <div class="row">
     <div class="col-md-6" id="map"></div>
-    <div class="col-md-6">
-      <div class="row">
-        <div class="row" id = "mood-selectors">
-          <div class="col-md-2 col-md-offset-1" id = "mood-button">
-            Vibe1
+    <div class="row">
+      <div class="col-md-6">
+          <div class="row" id = "mood-selectors">
+            <div class="col-md-2 col-md-offset-1" id = "mood-button">
+              Vibe1
+            </div>
+            <div class="col-md-2" id = "mood-button">
+              Vibe2
+            </div>
+            <div class="col-md-2" id = "mood-button">
+              Vibe3
+            </div>
+            <div class="col-md-2" id = "mood-button">
+              Vibe4
+            </div>
+            <div class="col-md-2" id = "mood-button">
+              Vibe5
+            </div>
           </div>
-          <div class="col-md-2" id = "mood-button">
-            Vibe2
-          </div>
-          <div class="col-md-2" id = "mood-button">
-            Vibe3
-          </div>
-          <div class="col-md-2" id = "mood-button">
-            Vibe4
-          </div>
-          <div class="col-md-2" id = "mood-button">
-            Vibe5
-          </div>
-        </div>
-        <div class = "row">
-          <div id="container-grid">
-            <ul id="chill-spot-list">
-              <% @current_city.spots.each do |spot| %>
-                <% if spot.title %>
-                  <li id="chill-spot">
-                    <h3><%= spot.title %></h3>
-                    <h5><%= spot.location %></h5>
-                    <p>
-                      <%= spot.description %>
-                      <div class="wrap">
-                        <div class="vote up">
-                          <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
-                            <button type="submit">
-                              <i class="fa fa-angle-up"></i>
-                            </button>
-                          </form>
+          <div class = "row">
+            <div id="container-grid">
+              <ul id="chill-spot-list">
+                <% @current_city.spots.each do |spot| %>
+                  <% if spot.title %>
+                    <li id="chill-spot">
+                      <h3><%= spot.title %></h3>
+                      <h5><%= spot.location %></h5>
+                      <p>
+                        <%= spot.description %>
+                        <div class="wrap">
+                          <div class="vote up">
+                            <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
+                              <button type="submit">
+                                <i class="fa fa-angle-up"></i>
+                              </button>
+                            </form>
+                          </div>
+                          <div class="stat">
+                            <span class="score"><%=spot.num_votes || 0%>
+                            </span>
+                          </div>
+                          <div class="vote down">
+                            <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
+                              <button type="submit">
+                                <i class="fa fa-angle-down"></i>
+                              </button>
+                            </form>
+                          </div>
                         </div>
-                        <div class="stat">
-                          <span class="score"><%=spot.num_votes || 0%>
-                          </span>
-                        </div>
-                        <div class="vote down">
-                          <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
-                            <button type="submit">
-                              <i class="fa fa-angle-down"></i>
-                            </button>
-                          </form>
-                        </div>
-                      </div>
-                    </p>
-                  </li>
+                      </p>
+                    </li>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </ul>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </div>
