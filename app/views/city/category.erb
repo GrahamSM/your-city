@@ -3,69 +3,64 @@
     <div class="col-md-6" id="map"></div>
     <div class="col-md-6">
       <div class="row">
-        <div class="col-md-2 col-md-offset-1" id = "mood-button">
-          Vibe1
+        <div class="row" id = "mood-selectors">
+          <div class="col-md-2 col-md-offset-1" id = "mood-button">
+            Vibe1
+          </div>
+          <div class="col-md-2" id = "mood-button">
+            Vibe2
+          </div>
+          <div class="col-md-2" id = "mood-button">
+            Vibe3
+          </div>
+          <div class="col-md-2" id = "mood-button">
+            Vibe4
+          </div>
+          <div class="col-md-2" id = "mood-button">
+            Vibe5
+          </div>
         </div>
-        <div class="col-md-2" id = "mood-button">
-          Vibe2
+        <div class = "row">
+          <div id="container-grid">
+            <ul id="chill-spot-list">
+              <% @current_city.spots.each do |spot| %>
+                <% if spot.title %>
+                  <li id="chill-spot">
+                    <h3><%= spot.title %></h3>
+                    <h5><%= spot.location %></h5>
+                    <p>
+                      <%= spot.description %>
+                      <div class="wrap">
+                        <div class="vote up">
+                          <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
+                            <button type="submit">
+                              <i class="fa fa-angle-up"></i>
+                            </button>
+                          </form>
+                        </div>
+                        <div class="stat">
+                          <span class="score"><%=spot.num_votes || 0%>
+                          </span>
+                        </div>
+                        <div class="vote down">
+                          <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
+                            <button type="submit">
+                              <i class="fa fa-angle-down"></i>
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </p>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-2" id = "mood-button">
-          Vibe3
-        </div>
-        <div class="col-md-2" id = "mood-button">
-          Vibe4
-        </div>
-        <div class="col-md-2" id = "mood-button">
-          Vibe5
-        </div>
-      </div>
-      <div id="container-grid">
-        <ul id="chill-spot-list">
-          <% @current_city.spots.each do |spot| %>
-            <% if spot.title %>
-              <li id="chill-spot">
-                <h3><%= spot.title %></h3>
-                <h5><%= spot.location %></h5>
-                <p>
-                  <%= spot.description %>
-                  <div class="wrap">
-                    <div class="vote up">
-                      <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
-                        <button type="submit">
-                          <i class="fa fa-angle-up"></i>
-                        </button>
-                      </form>
-                    </div>
-                    <div class="stat">
-                      <span class="score"><%=spot.num_votes || 0%>
-                      </span>
-                    </div>
-                    <div class="vote down">
-                      <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
-                        <button type="submit">
-                          <i class="fa fa-angle-down"></i>
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </p>
-
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
       </div>
     </div>
   </div>
-
 </div>
-
-
-
-
-
-
-
 
 <script>
 $(function(){
@@ -90,17 +85,30 @@ $(function(){
 });
 </script>
 
-
-
 <script>
     function initMap() {
-    var latitude = parseFloat('<%= @current_city.latitude %>')
-    var longitude = (parseFloat('<%= @current_city.longitude %>'))*(-1)
-    var mapDiv = document.getElementById('map');
-    var map = new google.maps.Map(mapDiv, {
-      center: {lat: latitude, lng: longitude},
-      zoom: 10
+    $.get('/city_data', function(data) {
+      all_data = JSON.parse(data)
+      city = all_data.city
+      category = all_data.category
+      spots = all_data.spots
+      var city_lat = parseFloat(city.latitude)
+      var city_lon = parseFloat(city.longitude)*(-1)
+      var mapDiv = document.getElementById('map');
+      var map = new google.maps.Map(mapDiv, {
+        center: {lat: city_lat, lng: city_lon},
+        zoom: 10
       });
-    }
+      for (var i = 0; i < spots.length; i++){
+        var myLatLng = {lat: parseFloat(spots[i].latitude), lng: parseFloat(spots[i].longitude)}
+        var marker = new google.maps.Marker({
+           position: myLatLng,
+           map: map
+         });
+      };
+    });
+  }
+</script>
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
