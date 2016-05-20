@@ -63,8 +63,13 @@
     erb :'city/categories'
   end
 
-  get '/city/:city/:category' do
-    @current_city = City.where(name: params[:city]).first
-    @current_category = Category.new(name: params[:category])
-    erb :'city/category'
-  end
+get '/city/:city/:category' do
+  @current_city = City.where(name: params[:city]).first
+  @current_category = Category.new(name: params[:category])
+  erb :'city/category'
+end
+
+get '/city/:city/category/:category/spot/:id/upvote' do
+  @current_spot = Spot.find_by(id: params[:id])
+  binding.pry
+end

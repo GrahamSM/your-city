@@ -12,7 +12,9 @@
                 <p><%= spot.description %></p>
                 <div class="wrap">
                   <div class="vote up">
-                    <i class="fa fa-angle-up"></i>
+                    <a href='category/<%=@current_category.name%>/spot/<%=spot.id%>/upvote'>
+                      <i class="fa fa-angle-up"></i>
+                    </a>
                   </div>
                   <div class="stat">
                     <span class="score">115
