@@ -6,48 +6,50 @@ vibes assciated with it >>> MAKE this clicable and locked like bootstrap theme
 img/video >>> MAKE this a drag and drop or something!!!
 ATTRIBUTE >>> disabled = "disabled"
 -->
-
-
-
-
-<div class="fluid-container">
-  <form class ="form-group row" method="post" action="/city/spot/new">
-    <div class="col-sm-10">
-       <label>Name:</label>
-       <input class="form-control">
-    </div>
-    <div class="col-sm-10">
-       <label>Address:</label>
-       <input class="form-control">
-    </div>
-    <div class="col-sm-10">
-       <label>Description:</label>
-       <input class="form-control">
-    </div>
-    <div class="col-sm-10">
-       <label>Category:</label>
-		<div class="btn-group">
-		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Action <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu">
-		    <li><a href="#">Date night</a></li>
-		    <li><a href="#"></a></li>
-		    <li><a href="#">Something else here</a></li>
-		    <li role="separator" class="divider"></li>
-		    <li><a href="#">Separated link</a></li>
-		  </ul>
-		</div>
-    </div>
-    <div class="form-group row">
+<div class="spot-form">
+  <div class="fluid-container">
+    <form class ="form-group row" method="post" action="/city/spot/new">
       <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary">Create Spot</button>
+         <label>Name:</label>
+         <input class="form-control">
       </div>
-    </div>
-  </form>
+      <div class="col-sm-10">
+         <label>Address:</label>
+         <input class="form-control">
+      </div>
+      <div class="col-sm-10">
+         <label>Description:</label>
+         <input class="form-control">
+      </div>
+      <div class="col-sm-10">
+         <label>Category:</label>
+  		<div class="btn-group">
+  		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  		    Action <span class="caret"></span>
+  		  </button>
+  		  <ul class="dropdown-menu">
+  		    <li><a href="#">Date night</a></li>
+  		    <li><a href="#"></a></li>
+  		    <li><a href="#">Something else here</a></li>
+  		    <li role="separator" class="divider"></li>
+  		    <li><a href="#">Separated link</a></li>
+  		  </ul>
+  		</div>
+      <div class="col-sm-10">
+        <label class="control-label">Select File</label>
+        <input id="input-1" type="file" class="file"/>
+      </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary">Create Spot</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
-
+<!--
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
@@ -125,4 +127,4 @@ ATTRIBUTE >>> disabled = "disabled"
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->

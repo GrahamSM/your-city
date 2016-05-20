@@ -1,9 +1,15 @@
-
+.spot-form {
+  margin-top: 80px;
+  width: 400px;
+  margin-left: 70%;
+  margin-right: 10%;
+}
 
 .fluid-container{
     margin-left: 5%;
     margin-right: 5%;
 }
+
 #map{
     width: 40%;
     padding-left: 250px;
