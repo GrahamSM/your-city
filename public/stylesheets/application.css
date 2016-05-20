@@ -17,7 +17,7 @@
 #container-grid {
     overflow-y: scroll;
     list-style: none;
-    max-height: 500px;
+    max-height: 550px;
     margin-bottom: 50px;
 }
 
@@ -93,6 +93,18 @@
   #map{
     padding-top: 1000px;
     width: 40%;
+  }
+
+  #mood-button{
+    text-align: center;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  #mood-button:hover{
+    background-color: #99b3ff;
   }
 
 /*
