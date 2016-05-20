@@ -25,6 +25,7 @@ end
 
 desc "Imports a CSV file into an ActiveRecord table"
 task "db:populate" do
+
   CSV.foreach('cities.csv') do |row|
     City.create!(name: row[0], latitude: row[1].strip, longitude: row[2].strip)
   end
@@ -35,4 +36,5 @@ task "db:populate" do
   all_spots.each do |spot|
     City.first.spots << all_spots
   end
+
 end
