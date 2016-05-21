@@ -17,7 +17,7 @@
   end
 
   get '/city/:city/new' do
-    @current_city = City.new
+    @current_city = City.find_by(name: params[:city])
     @vibes = Vibe.all
     @categories = Category.all
     @spot = Spot.new
