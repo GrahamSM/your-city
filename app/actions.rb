@@ -39,8 +39,7 @@
   post '/city/:city/new' do
     @current_city = City.find_by(name: params[:city])
     @spot = Spot.new(title: params[:title], location: params[:location],
-    description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long])
-    # @categories = Category.all
+    description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long], category_id: params[:category_selection].to_i)
     if params[:vibe_one]
        @spot.vibes << Vibe.find_by(id: params[:vibe_one].to_i)
     end
@@ -50,7 +49,6 @@
     if params[:vibe_three]
       @spot.vibes << Vibe.find_by(id: params[:vibe_three].to_i)
     end
-    binding.pry
     if @spot.save
       @filename = "#{@spot.id}_spot_image.jpg"
       file_name = params["file"][:filename]
