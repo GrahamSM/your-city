@@ -17,6 +17,8 @@
   end
 
   get '/city/spot/new' do
+    @vibes = Vibe.all
+    @categories = Category.all
     @spot = Spot.new
     erb :'city/spot/new'
   end
@@ -35,7 +37,7 @@
 
   post '/city/spot/new' do
     # @categories = Category.all
-    @vibes = Vibe.all
+    binding.pry
     @spot = Spot.new(title: params[:title], location: params[:location],
     description: params[:description])
     if @spot.save
