@@ -1,12 +1,18 @@
 /*HOME PAGE*/
+
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
 #home-title{
   margin-left: 100px;
 }
 
 #city-list-home{
-  float:right;
-  margin-right: 200px;
   list-style: none;
+  margin-right: auto;
+  margin-left:auto;
   margin-top: 125px;
 }
 
@@ -14,19 +20,21 @@
   margin-bottom: 20px;
   border: solid;
   border-width: 1px;
-  border-color: #ff5500;
+  border-color: #00c2ff;
   border-radius: 0.5px;
   width: 250px;
   height: 50px;
   text-align: center;
   padding-top: 12px;
   color:black;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 #city-item:hover{
-  background-color: #ff5500;
-  color:white
+  background-color: #00c2ff;
+  color:white;
+  transition:0.3s;
+  text-decoration: none;
 }
 
 .fluid-container {
@@ -34,8 +42,10 @@
 }
 
 #home{
-  background-image: url("http://www.yurtopic.com/travel/destinations/images/thailand-places/Aerial-View-Of-Bangkok2.jpg");
+  /*background-image: url("http://afashiony.com/wp-content/uploads/2014/10/wpid-Tumblr-Palm-Trees-Looking-Up-2015-2016-0.jpg");*/
+  background-size: 1300px 900px;
 }
+
 /*END HOME PAGE*/
 
 .spot-form {
@@ -55,8 +65,6 @@
     height: 60%;
     padding-top: 1000px;
 }
-
-
 
 #floating-panel-new {
        position: absolute;
@@ -104,8 +112,6 @@
 #chill-spot:active{
 }
 
-
-
 #mood-container{
 
 }
@@ -118,7 +124,6 @@
 #row-new-spot{
   margin-top:75px;
 }
-
 
 #chill-spot-img{
   margin-top:10px;
@@ -159,12 +164,6 @@
   margin-left:10px;
 }
 
-/*
-  #map{
-    padding-top: 1000px;
-    width: 40%;
-  }*/
-
   #mood-button{
     text-align: center;
     padding: 10px;
@@ -196,87 +195,6 @@
     margin-right: auto;
   }
 
-/*
-body {
-  width: 80%;
-  margin: 30px auto;
-  font-family: sans-serif;
-}
-
-h3 {
-  text-align: center;
-  font-size: 1.65em;
-  margin: 0 0 30px;
-}
-
- div {
-  font-size: 0;
-}
-
- a {
-  font-size: 16px;
-  overflow: hidden;
-  display: inline-block;
-  margin-bottom: 8px;
-  width: calc(50% - 4px);
-  margin-right: 8px;
-}
-
- a:nth-of-type(2n) {
-  margin-right: 0;
-}
-
-@media screen and (min-width: 50em) {
-  a {
-    width: calc(25% - 6px);
-  }
-
-  a:nth-of-type(2n) {
-    margin-right: 8px;
-  }
-
-  a:nth-of-type(4n) {
-    margin-right: 0;
-  }
-}
-
-a:hover img {
-  transform: scale(1.15);
-}
-
- figure {
-  margin: 0;
-}
-
-img {
-  border: none;
-  max-width: 120%;
-  height: auto;
-  display: block;
-  background: #ccc;
-  transition: transform .2s ease-in-out;
-}
-
-.p a {
-  display: inline;
-  font-size: 13px;
-  margin: 0;
-}
-
- .p {
-  text-align: center;
-  font-size: 13px;
-  padding-top: 100px;
-}*/
-
-
-/*!
- * Start Bootstrap - Creative Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-
 #category-grid{
   margin-top:20px;
 }
@@ -289,7 +207,6 @@ img {
     margin: 50px auto 0;
     max-width: 400px;
 }
-
 
 .service-box p {
     margin-bottom: 0;
