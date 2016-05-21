@@ -1,7 +1,14 @@
-<<<<<<< HEAD
-=======
+<% if @spot && @spot.errors.any? %>
+  <div class="error-msg">
+    <i class="fa fa-times-circle"></i>
+    <ul id="error-list">
+      <% @spot.errors.full_messages.each do |spot_error| %>
+        <li class="list-group-item"><%= spot_error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
->>>>>>> f8bcb42185a1e6ad25da8f6eefe28cdca80f79a7
 <div class="container-fluid">
   <div class="row" id = "row-new-spot">
     <div class="col-md-6">
@@ -28,9 +35,9 @@
         <div class="row">
             <label for="sel1">Select a Category:</label>
             <select class="form-control" id="sel1" name="category_selection">
-              <option value="<%= @categories[0].id %>"><%= @categories[0].name %></option>
-              <option value="<%= @categories[1].id %>"><%= @categories[1].name %></option>
-              <option value="<%= @categories[2].id %>"><%= @categories[2].name %></option>
+              <option value="<%= Category.all[0].id %>"><%= Category.all[0].name %></option>
+              <option value="<%= Category.all[1].id %>"><%= Category.all[1].name %></option>
+              <option value="<%= Category.all[2].id %>"><%= Category.all[2].name %></option>
             </select>
         </div>
         <div class="row">
@@ -40,11 +47,11 @@
         <div class="row">
           <div class="btn-group" data-toggle="buttons">
               <label class="btn btn-primary">
-              <input type="checkbox" autocomplete="off" name="vibe_one" value = "<%=@vibes[0].id%>"><%= @vibes[0].label %></label>
+              <input type="checkbox" autocomplete="off" name="vibe_one" value = "<%=Vibe.all[0].id%>"><%= Vibe.all[0].label %></label>
               <label class="btn btn-primary">
-              <input type="checkbox" autocomplete="off" name="vibe_two" value = "<%=@vibes[1].id%>"><%= @vibes[1].label %></label>
+              <input type="checkbox" autocomplete="off" name="vibe_two" value = "<%=Vibe.all[1].id%>"><%= Vibe.all[1].label %></label>
               <label class="btn btn-primary">
-              <input type="checkbox" autocomplete="off" name="vibe_three" value = "<%=@vibes[2].id%>"><%= @vibes[2].label %></label>
+              <input type="checkbox" autocomplete="off" name="vibe_three" value = "<%=Vibe.all[2].id%>"><%= Vibe.all[2].label %></label>
           </div>
         </div>
         <div class="row" id = "form-group-row">
