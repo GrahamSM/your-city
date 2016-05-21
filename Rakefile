@@ -41,7 +41,7 @@ task "db:populate" do
     User.create!(username: Faker::Internet.user_name, password: Faker::Internet.password(10), email: Faker::Internet.safe_email)
   end
 
-  3.times do |i|
+  5.times do |i|
     Spot.first.vibes << Vibe.create!(label: Faker::Beer.hop, num_votes: 0)
   end
 

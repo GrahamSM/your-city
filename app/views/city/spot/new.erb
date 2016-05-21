@@ -23,19 +23,12 @@
            <input class="form-control" type="text" name="description" placeholder="Description">
         </div>
         <div class="row">
-           <label>Category:</label>
-      		<div class="btn-group">
-      		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      		    Action <span class="caret"></span>
-      		  </button>
-      		  <ul class="dropdown-menu">
-      		    <li><a class="dropdown-item" href="#"><%= @categories[0].name %></a></li>
-              <li><a class="dropdown-item" href="#"><%= @categories[1].name %></a></li>
-              <li><a class="dropdown-item" href="#"><%= @categories[2].name %></a></li>
-      		    <li role="separator" class="divider"></li>
-      		    <li><a href="#">Separated link</a></li>
-      		  </ul>
-      		</div>
+            <label for="sel1">Select a Category:</label>
+            <select class="form-control" id="sel1" name="category_selection">
+              <option value="<%= @categories[0].id %>"><%= @categories[0].name %></option>
+              <option value="<%= @categories[1].id %>"><%= @categories[1].name %></option>
+              <option value="<%= @categories[2].id %>"><%= @categories[2].name %></option>
+            </select>
         </div>
         <div class="row">
           <label class="control-label">Upload Image</label>
