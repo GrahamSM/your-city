@@ -197,7 +197,6 @@ a, a:visited, a:hover, a:active {
     background-color: #99b3ff;
   }
 
-
   .error-msg {
     margin-top: 75px;
     margin-left: auto;
@@ -296,8 +295,6 @@ a, a:visited, a:hover, a:active {
     padding-right: 0;
     padding-left: 0;
 }
-
-
 
 .btn-primary .badge {
     color: #f05f40;
