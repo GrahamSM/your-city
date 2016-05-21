@@ -37,10 +37,11 @@
   end
 
   post '/city/:city/new' do
-    # @categories = Category.all
+    binding.pry
     @current_city = City.find_by(name: params[:city])
     @spot = Spot.new(title: params[:title], location: params[:location],
-    description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long])
+    description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long], category_id: params[:category_selection].to_i)
+    binding.pry
     if @spot.save
       @filename = "#{@spot.id}_spot_image.jpg"
       file_name = params["file"][:filename]
