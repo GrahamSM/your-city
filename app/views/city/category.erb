@@ -41,10 +41,10 @@
                     <p>
                       <%= spot.description %>
 
-                      <span class="label label-default">Vibe Selected</span>
-                      <span class="label label-default">Vibe Selected 2</span>
-                      <span class="label label-default">Vibe Selected 3</span>
-                      <br>
+                        <span class="label label-default"><%= spot.vibes[0].label if spot.vibes[0] %></span>
+                        <span class="label label-default"><%= spot.vibes[1].label if spot.vibes[1] %></span>
+                        <span class="label label-default"><%= spot.vibes[2].label if spot.vibes[2] %></span>
+                        <br>
 
 
                     <img id = "chill-spot-img" alt="Snippet" height="32" src="city/img/portfolio/1.jpg"  />
