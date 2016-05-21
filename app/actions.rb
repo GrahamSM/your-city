@@ -17,7 +17,7 @@
   end
 
   get '/city/:city/new' do
-    @current_city = City.find_by(name: params[:city])
+    @current_city = City.find(params[:city].to_i)
     @vibes = Vibe.all
     @categories = Category.all
     @spot = Spot.new
@@ -85,13 +85,13 @@
     redirect '/'
   end
 
-  get '/city/:city' do
-    @current_city = City.find_by(name: params[:city])
-    erb :'city/categories'
-  end
+get '/city/:city' do
+  @current_city = City.find_by(name: params[:city])
+  erb :'city/categories'
+end
 
 get '/city/:city/:id' do
-  @current_city = City.find_by(name: params[:city])
+  @current_city = City.find(params[:city])
   @current_category = Category.find(params[:id])
   redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
 end
@@ -128,7 +128,7 @@ post '/:city/:category/upvote/spot/:id' do
   @current_spot.save
   @current_category = Category.find_by(name: params[:category])
   @current_city = City.find_by(name: params[:city])
-  redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
+  redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
 end
 
 post '/:city/:category/downvote/spot/:id' do
@@ -141,7 +141,7 @@ post '/:city/:category/downvote/spot/:id' do
   @current_spot.save
   @current_category = Category.find_by(name: params[:category])
   @current_city = City.find_by(name: params[:city])
-  redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
+  redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
 end
 
 get '/upvote' do

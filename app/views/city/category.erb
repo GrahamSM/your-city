@@ -22,7 +22,6 @@
                 <% if spot.title %>
                   <li class="chill-spot" data-spot-id="<%= spot.id %>">
                     <h3><%= spot.title %></h3>
-                    <h5><%= spot.location %></h5>
                     <p>
                       <%= spot.description %>
 
@@ -32,11 +31,6 @@
                         <br>
 
                         <img id = "chill-spot-img" alt="No image" height="32" src="images/<%= spot.id %>_spot_image.jpg"/>
-
-
-                     <!-- PLACEHOLDER FOR IMAGES ONCE THEY ARE CREATED IN PUBLIC/IMG/ AND THE UPLOADED SPOT IMAGE FROM USER WILL BE IN THERE WITH AN ID. IN THE BELOW EXAMPLE, IT IS GIVING EXAMPLE OF IMAGE FROM:
-                     A = #{SPOT.ID}_SPOT_PHOTO.JPG CODE CRAP
-                         <p><img src="/public/images/a">  -->
 
                       <div class="wrap">
                         <div class="vote up">
@@ -169,28 +163,6 @@ $(function(){
       });
     }
 
-      // get the id of spots filtered
-      // show all the spots on the page (in case some where hidden before)
-      // use the loop to hide the spots not in the results
-      // $('.chill-spot').each(function(i, obj){
-      //   var id = $(this).data('spot-id');
-      //   if (arrayOfSpotIdsq.indexOf(id) === -1) {
-      //     $(this).hide();
-      //   }
-      // })
-
-
-    // var displaySpots = function(spots) {
-    //   for (var i = 0; i < spots.length; i++){
-    //     $('#chill-spot-list').append('<h2>' + spots[i].title + '<h2>' + '<h4>' + spots[i].location + '<h4>'
-    //     + '<p>' + spots[i].description + '<p>' + '<p>' + spots[i].id + '<p>' + '<br/>')
-    //   }
-    // }
-    //
-    // var displayStyle = function(){
-    //   $('#chill-spot-list')
-    // }
-
     $(':checkbox').change(function() {
       // Returns an array of selected checkbox values
       filters['options'] = $('#mood-button').find('input:checked').map(function(index, object){return object.name}).toArray();
@@ -199,9 +171,24 @@ $(function(){
 
     function initMap() {
       getData()
-  }
-</script>
+    }
+   //
+  //   $(".vote").click(function(){
+  //     debugger
+  //      var count = parseInt($("~ .score", this).text());
+   //
+  //      if($(this).hasClass("up")) {
+  //        var score = score + 1;
+   //
+  //         $("~ .score", this).text(count);
+  //      } else {
+  //        var count = count - 1;
+  //         $("~ .score", this).text(count);
+  //      }
+  //  }
+
 
 </script>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
