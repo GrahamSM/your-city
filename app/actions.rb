@@ -110,6 +110,14 @@ get '/city_data' do
   my_data = my_hash.to_json
 end
 
+get '/filtered_spots' do
+  @current_spots = City.first.spots
+  if params[:options]
+    @current_spots = City.first.spots.includes(:vibes).where('vibes.label IN (?)', params[:options]).references(:vibes)
+  end
+  @current_spots.to_json
+end
+
 post '/:city/:category/upvote/spot/:id' do
   @current_spot = Spot.find_by(id: params[:id])
   if @current_spot.num_votes

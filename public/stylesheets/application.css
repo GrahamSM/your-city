@@ -1,5 +1,9 @@
 /*HOME PAGE*/
 
+body{
+  padding-top:31px;
+}
+
 a, a:visited, a:hover, a:active {
     text-decoration: none;
     color: inherit;
@@ -63,7 +67,7 @@ a, a:visited, a:hover, a:active {
     border-radius: 5px;
     margin-right: 10px;
     height: 60%;
-    padding-top: 1000px;
+    padding-top:1000px
 }
 
 #floating-panel-new {
@@ -114,6 +118,9 @@ a, a:visited, a:hover, a:active {
 
 #mood-container{
 
+}
+#mood-selectors{
+  margin-top:10px;
 }
 
 #mood{

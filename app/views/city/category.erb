@@ -5,24 +5,12 @@
       <div class="row">
 
         <div class="row" id = "mood-selectors">
-
-          <div class="col-md-2 col-md-offset-1" id = "mood-button">
-            Vibe1
-          </div>
-          <div class="col-md-2" id = "mood-button">
-            Vibe2
-          </div>
-          <div class="col-md-2" id = "mood-button">
-            Vibe3
-          </div>
-          <div class="col-md-2" id = "mood-button">
-            Vibe4
-          </div>
-          <div class="col-md-2" id = "mood-button">
-            Vibe5
-          </div>
-          <div class="col-xs-12" id = "mood-button">
-            Submit
+          <div class="col-md-5 col-md-offset-1" id = "mood-button">
+            <input type="checkbox" name="Exciting" value="Exciting">Exciting
+            <input type="checkbox" name="Romantic" value="Romantic">Romantic
+            <input type="checkbox" name="Relaxing" value="Relaxing">Relaxing
+            <input type="checkbox" name="Rewarding" value="Rewarding">Rewarding
+            <input type="checkbox" name="Stimulating" value="Stimulating">Stimulating
           </div>
         </div>
 
@@ -105,27 +93,76 @@ $(function(){
 </script>
 
 <script>
-    function initMap() {
-    $.get('/city_data', function(data) {
-      all_data = JSON.parse(data)
-      city = all_data.city
-      category = all_data.category
-      spots = all_data.spots
-      var city_lat = parseFloat(city.latitude)
-      var city_lon = parseFloat(city.longitude)*(-1)
-      var mapDiv = document.getElementById('map');
-      var map = new google.maps.Map(mapDiv, {
-        center: {lat: city_lat, lng: city_lon},
-        zoom: 10
+
+    var filters = {};
+    var gMarkers = [];
+
+    var getData = function() {
+      $.ajax({
+        url:'/city_data',
+        data: filters,
+        success: function(data) {
+          all_data = JSON.parse(data)
+          city = all_data.city
+          category = all_data.category
+          spots = all_data.spots
+          var city_lat = parseFloat(city.latitude)
+          var city_lon = parseFloat(city.longitude)*(-1)
+          var mapDiv = document.getElementById('map');
+          window.map = new google.maps.Map(mapDiv, {
+            center: {lat: city_lat, lng: city_lon},
+            zoom: 10
+          });
+          for (var i = 0; i < spots.length; i++){
+            var myLatLng = {lat: parseFloat(spots[i].latitude), lng: parseFloat(spots[i].longitude)}
+            var marker = new google.maps.Marker({
+               position: myLatLng,
+               map: window.map
+             });
+            gMarkers.push(marker);
+          };
+        }
       });
+    }
+
+    var getSpotsInfo = function() {
+      $.ajax({
+        url: '/filtered_spots',
+        data: filters,
+        success: renderSpots,
+        dataType: 'JSON'
+      })
+    }
+
+    var renderSpots = function(spots) {
+      $('#chill-spot-list').empty()
+      for (var j = 0; j < gMarkers.length; j++) {
+        gMarkers[j].setMap(null);
+      }
+      gMarkers = [];
       for (var i = 0; i < spots.length; i++){
         var myLatLng = {lat: parseFloat(spots[i].latitude), lng: parseFloat(spots[i].longitude)}
         var marker = new google.maps.Marker({
            position: myLatLng,
-           map: map
+           map: window.map
          });
+        gMarkers.push(marker);
       };
-    });
+      displaySpots(spots);
+    }
+
+    var displaySpots = function(spots) {
+      $('#chill-spot-list').append('<p>' + spots[0].title + '<p>')
+    }
+
+    $(':checkbox').change(function() {
+      // Returns an array of selected checkbox values
+      filters['options'] = $('#mood-button').find('input:checked').map(function(index, object){return object.name}).toArray();
+      getSpotsInfo();
+    })
+
+    function initMap() {
+      getData()
   }
 </script>
 
