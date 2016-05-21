@@ -56,10 +56,15 @@
             <button type="submit" class="btn btn-primary">Create Spot</button>
           </div>
         </div>
+        <div class="row">
+          Your latitude: <div class="result_lat"></div>
+          Your longitude: <div class="result_long"></div>
+        </div>
       </form>
     </div>
   </div>
 </div>
+
 
 
 <script>
@@ -84,6 +89,10 @@
           map: resultsMap,
           position: results[0].geometry.location
         });
+        var long = marker.position.lng();
+        var lat = marker.position.lat();
+        $('.result_lat').html(lat);
+        $('.result_long').html(long);
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }

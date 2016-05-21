@@ -125,3 +125,7 @@ end
 get '/upvote' do
   erb :'city/category'
 end
+
+post '/get/lat/lon' do
+  binding.pry
+end
