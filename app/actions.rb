@@ -38,8 +38,7 @@
 
   post '/city/:city/new' do
     @current_city = City.find_by(name: params[:city])
-    @spot = Spot.new(title: params[:title], location: params[:location],
-    description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long], category_id: params[:category_selection].to_i)
+    @spot = Spot.new(title: params[:title], location: params[:location], description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long], category_id: params[:category_selection].to_i)
     if params[:vibe_one]
        @spot.vibes << Vibe.find_by(id: params[:vibe_one].to_i)
     end
@@ -61,7 +60,7 @@
       @spot.save
       redirect "/city"
     else
-      redirect '/'
+      erb :'city/spot/new'
     end
   end
 
