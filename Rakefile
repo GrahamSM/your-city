@@ -38,7 +38,6 @@ task "db:populate" do
   # 10.times do |i|
   #   City.first.spots << Spot.create!(title: Faker::Company.name, location: Faker::StarWars.planet, description: Faker::Hacker.say_something_smart, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
   # end
-
   Category.create!(name: "Night out")
   Category.create!(name: "Active")
   Category.create!(name: "Adventurous")
