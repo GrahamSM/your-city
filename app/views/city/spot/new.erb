@@ -1,54 +1,104 @@
 
-<div class="spot-form">
-  <div class="fluid-container">
-    <form class ="form-group row" method="post" action="/city/spot/new" enctype="multipart/form-data">
-      <div class="col-sm-10">
-         <label>Name:</label>
-         <input class="form-control" type="text" name="title" value="<% @spot.title%>" placeholder="Name" >
+<div class="container-fluid">
+  <div class="row" id = "row-new-spot">
+    <div class="col-md-6">
+      <div id="map"></div>
+      <div id="floating-panel-new">
+        <input id="address" type="textbox" value="Sydney, NSW">
+        <input id="submit" type="button" value="Please enter a location">
       </div>
-      <div class="col-sm-10">
-         <label>Address:</label>
-         <input class="form-control" type="text" name="location" value="<%@spot.location%>" placeholder="Address">
-      </div>
-      <div class="col-sm-10">
-         <label>Description:</label>
-         <input class="form-control" type="text" name="description" value="<%@spot.description%>" placeholder="Description">
-      </div>
-      <div class="col-sm-10">
-         <label>Category:</label>
-  		<div class="btn-group">
-  		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  		    Action <span class="caret"></span>
-  		  </button>
-  		  <ul class="dropdown-menu">
-  		    <li><a href="#">Date night</a></li>
-  		    <li><a href="#"></a></li>
-  		    <li><a href="#">Something else here</a></li>
-  		    <li role="separator" class="divider"></li>
-  		    <li><a href="#">Separated link</a></li>
-  		  </ul>
-  		</div>
-      <div class="col-sm-10">
-        <label class="control-label">Upload Image</label>
-        <input type="file" name="file">
-      </div>
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary">
-        <input type="checkbox" autocomplete="off"> Mood1
-     </label>
-     <label class="btn btn-primary">
-       <input type="checkbox" autocomplete="off"> Mood2
-     </label>
-     <label class="btn btn-primary">
-       <input type="checkbox" autocomplete="off"> Mood3
-     </label>
-      </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Create Spot</button>
+    </div>
+    <div class="col-md-6" id="form-new-spot">
+      <form class ="form-group row" method="post" action="/city/spot/new" enctype="multipart/form-data">
+        <div class="row">
+           <label>Name:</label>
+           <input class="form-control" type="text" name="title" value="<% @spot.title%>" placeholder="Name" >
         </div>
-      </div>
-    </form>
+        <div class="row">
+           <label>Address:</label>
+           <input class="form-control" type="text" name="location" value="<%@spot.location%>" placeholder="Address">
+        </div>
+        <div class="row">
+           <label>Description:</label>
+           <input class="form-control" type="text" name="description" value="<%@spot.description%>" placeholder="Description">
+        </div>
+        <div class="row">
+           <label>Category:</label>
+      		<div class="btn-group">
+      		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      		    Action <span class="caret"></span>
+      		  </button>
+      		  <ul class="dropdown-menu">
+      		    <li><a class="dropdown-item" href="#">category1</a></li>
+              <li><a class="dropdown-item" href="#">category2</a></li>
+              <li><a class="dropdown-item" href="#">category3</a></li>
+      		    <li role="separator" class="divider"></li>
+      		    <li><a href="#">Separated link</a></li>
+      		  </ul>
+      		</div>
+        </div>
+        <div class="row">
+          <label class="control-label">Upload Image</label>
+          <input type="file" name="file">
+        </div>
+        <div class="row">
+          <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary">
+              <input type="checkbox" autocomplete="off">vibe1</label>
+              <label class="btn btn-primary">
+              <input type="checkbox" autocomplete="off">vibe2</label>
+              <label class="btn btn-primary">
+              <input type="checkbox" autocomplete="off">vibe3</label>
+          </div>
+        </div>
+        <div class="row" id = "form-group-row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create Spot</button>
+          </div>
+        </div>
+        <div class="row">
+          Your latitude: <div class="result_lat"></div>
+          Your longitude: <div class="result_long"></div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
+
+
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: {lat: -34.397, lng: 150.644}
+    });
+    var geocoder = new google.maps.Geocoder();
+
+    document.getElementById('submit').addEventListener('click', function() {
+      geocodeAddress(geocoder, map);
+    });
+  }
+
+  function geocodeAddress(geocoder, resultsMap) {
+    var address = document.getElementById('address').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+        var long = marker.position.lng();
+        var lat = marker.position.lat();
+        $('.result_lat').html(lat);
+        $('.result_long').html(long);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxGn34Xr4JBNIC0xYNaK_I4G8_dc4cIMo&callback=initMap">
+</script>
