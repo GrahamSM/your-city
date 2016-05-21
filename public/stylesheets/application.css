@@ -9,6 +9,11 @@ a, a:visited, a:hover, a:active {
     color: inherit;
 }
 
+#java-div{
+  border: solid;
+  border-color: black;
+}
+
 #home-title{
   margin-left: 100px;
 }
@@ -94,17 +99,21 @@ a, a:visited, a:hover, a:active {
 }
 
 #chill-spot-list{
-
+  overflow-y: scroll;
+  overflow-y: scroll;
+  list-style: none;
+  max-height: 550px;
+  margin-bottom: 50px;
 }
 
-#chill-spot{
+.chill-spot{
   float: right;
   list-style-type: none;
   border: 0.5px;
   width: 600px;
   max-height: 350px;
   border-style: solid;
-  border-color: black;
+  border-color: #00c2ff;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -113,7 +122,11 @@ a, a:visited, a:hover, a:active {
   border-radius: 5px;
 }
 
-#chill-spot:active{
+.chill-spot p {
+  display: inline-block;
+}
+
+.chill-spot:active{
 }
 
 #mood-container{
@@ -121,6 +134,7 @@ a, a:visited, a:hover, a:active {
 }
 #mood-selectors{
   margin-top:10px;
+  margin-left: 10px;
 }
 
 #mood{
