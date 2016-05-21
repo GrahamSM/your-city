@@ -118,6 +118,13 @@
 #row-new-spot{
   margin-top:75px;
 }
+
+
+#chill-spot-img{
+  margin-top:10px;
+  width:150px;
+  height: 100px;
+}
 .wrap{
   float:right;
   margin:0;
