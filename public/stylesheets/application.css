@@ -347,3 +347,9 @@ img {
     color: #f05f40;
     background-color: #fff;
 }
+
+.signup-form{
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
