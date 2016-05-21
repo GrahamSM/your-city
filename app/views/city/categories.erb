@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="/city/<%=@current_city.name%>/category1" class="category">
+                    <a href="/city/<%=@current_city.name%>/<%=Category.all[0].id%>" class="category">
                         <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
                         <div class="category-caption">
                             <div class="category-caption-content">
@@ -11,14 +11,14 @@
                                     Category
                                 </div>
                                 <div class="project-name">
-                                    Nicholas Cage
+                                    <%=Category.all[0].name%>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="/city/<%=@current_city.name%>/category2" class="category">
+                    <a href="/city/<%=@current_city.name%>/<%=Category.all[1].id%>" class="category">
                         <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
                         <div class="category-caption">
                             <div class="category-caption-content">
@@ -26,14 +26,14 @@
                                     Category
                                 </div>
                                 <div class="project-name">
-                                    Michelle is Awesome!
+                                      <%=Category.all[1].name%>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="/city/<%=@current_city.name%>/category3" class="category">
+                    <a href="/city/<%=@current_city.name%>/<%=Category.all[2].id%>" class="category">
                         <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
                         <div class="category-caption">
                             <div class="category-caption-content">
@@ -41,14 +41,14 @@
                                     Category
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <%=Category.all[2].name%>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="/city/<%=@current_city.name%>/category4" class="category">
+                    <a href="/city/<%=@current_city.name%>/<%=Category.all[3].id%>" class="category">
                         <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
                         <div class="category-caption">
                             <div class="category-caption-content">
@@ -56,7 +56,7 @@
                                     Category
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <%=Category.all[3].name%>
                                 </div>
                             </div>
                         </div>
@@ -70,15 +70,12 @@
                                 <div class="project-category text-faded">
                                     Add a New Spot
                                 </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
                  <div class="col-lg-4 col-sm-6">
-                    <a href="/city/<%=@current_city.name%>/category6" class="category">
+                    <a href="/city/<%=@current_city.name%>/<%=Category.all[4].id%>" class="category">
                         <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
                         <div class="category-caption">
                             <div class="category-caption-content">
@@ -86,14 +83,14 @@
                                     Category
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <%=Category.all[4].name%>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                  <div class="col-lg-4 col-sm-6">
-                    <a href="/city/<%=@current_city.name%>/category7" class="category">
+                    <a href="/city/<%=@current_city.name%>/<%=Category.all[5].id%>" class="category">
                         <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
                         <div class="category-caption">
                             <div class="category-caption-content">
@@ -101,14 +98,14 @@
                                     Category
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <%=Category.all[5].name%>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                  <div class="col-lg-4 col-sm-6">
-                    <a href="/city/<%=@current_city.name%>/category8" class="category">
+                    <a href="/city/<%=@current_city.name%>/<%=Category.all[6].id%>" class="category">
                         <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
                         <div class="category-caption">
                             <div class="category-caption-content">
@@ -116,14 +113,14 @@
                                     Category
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                      <%=Category.all[6].name%>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="/city/<%=@current_city.name%>/category9" class="category">
+                    <a href="/city/<%=@current_city.name%>/<%=Category.all[7].id%>" class="category">
                         <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
                         <div class="category-caption">
                             <div class="category-caption-content">
@@ -131,7 +128,7 @@
                                     Category
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                  <%=Category.all[7].name%>
                                 </div>
                             </div>
                         </div>

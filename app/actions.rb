@@ -38,8 +38,7 @@
 
   post '/city/:city/new' do
     @current_city = City.find_by(name: params[:city])
-    @spot = Spot.new(title: params[:title], location: params[:location],
-    description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long], category_id: params[:category_selection].to_i)
+    @spot = Spot.new(title: params[:title], location: params[:location], description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long], category_id: params[:category_selection].to_i)
     if params[:vibe_one]
        @spot.vibes << Vibe.find_by(id: params[:vibe_one].to_i)
     end
@@ -59,9 +58,10 @@
       @current_city.spots << @spot
       @current_city.save
       @spot.save
-      redirect "/city"
+      @current_category = Category.find_by(id: params[:category_selection])
+      redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
     else
-      redirect '/'
+      erb :'city/spot/new'
     end
   end
 
@@ -86,20 +86,19 @@
   end
 
   get '/city/:city' do
-    #@categories = Category.all
-    @current_city = City.first
+    @current_city = City.find_by(name: params[:city])
     erb :'city/categories'
   end
 
-get '/city/:city/:category' do
-  @current_city = City.first
-  @current_category = Category.first ##TODO:Hardcode these into the database!!
-  redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
+get '/city/:city/:id' do
+  @current_city = City.find_by(name: params[:city])
+  @current_category = Category.find(params[:id])
+  redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
 end
 
 get '/city' do
-  @current_city = City.first
-  @current_category = Category.first
+  @current_city = City.find(params[:city])
+  @current_category = Category.find(params[:category])
   erb :'city/category'
 end
 

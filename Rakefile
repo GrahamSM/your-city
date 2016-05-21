@@ -29,20 +29,25 @@ task "db:populate" do
     City.create!(name: "Toronto", latitude: "43.6532", longitude: "79.3832")
   end
 
-  10.times do |i|
-    City.first.spots << Spot.create!(title: Faker::Company.name, location: Faker::StarWars.planet, description: Faker::Hacker.say_something_smart, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
-  end
 
-  9.times do |i|
-    Category.create!(name: Faker::SlackEmoji.activity)
-  end
+  Vibe.create!(label: "Exciting")
+  Vibe.create!(label: "Romantic")
+  Vibe.create!(label: "Relaxing")
+  Vibe.create!(label: "Rewarding")
+  Vibe.create!(label: "Stimulating")
+  # 10.times do |i|
+  #   City.first.spots << Spot.create!(title: Faker::Company.name, location: Faker::StarWars.planet, description: Faker::Hacker.say_something_smart, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
+  # end
+  Category.create!(name: "Night out")
+  Category.create!(name: "Active")
+  Category.create!(name: "Adventurous")
+  Category.create!(name: "Food & Drink")
+  Category.create!(name: "Art & Music")
+  Category.create!(name: "Hidden Gems")
+  Category.create!(name: "No Name")
+  Category.create!(name: "No Name Two")
 
   10.times do |i|
     User.create!(username: Faker::Internet.user_name, password: Faker::Internet.password(10), email: Faker::Internet.safe_email)
   end
-
-  5.times do |i|
-    Spot.first.vibes << Vibe.create!(label: Faker::Beer.hop, num_votes: 0)
-  end
-
 end
