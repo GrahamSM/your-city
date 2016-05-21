@@ -34,6 +34,7 @@
   end
 
   post '/city/spot/new' do
+    binding.pry
     @spot = Spot.new(title: params[:title], location: params[:location],
     description: params[:description])
     @filename = "#{@spot.id}_spot_image.jpg"
@@ -121,4 +122,8 @@ end
 
 get '/upvote' do
   erb :'city/category'
+end
+
+post '/get/lat/lon' do
+  binding.pry
 end
