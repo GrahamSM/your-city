@@ -34,17 +34,20 @@
   end
 
   post '/city/spot/new' do
+    # @categories = Category.all
+    @vibes = Vibe.all
     @spot = Spot.new(title: params[:title], location: params[:location],
     description: params[:description])
+    if @spot.save
     @filename = "#{@spot.id}_spot_image.jpg"
     file_name = params["file"][:filename]
     File.open("./public/images/#{@filename}",'wb',) do |f|
       f.write(params["file"][:tempfile].read)
     end
-    @spot.image = file_name
-    if @spot.save
+      @spot.image = file_name
+      redirect '/'
     else
-      erb :'city/spot/new'
+      redirect '/city/spot/new'
     end
   end
 
