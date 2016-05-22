@@ -13,7 +13,7 @@
    <meta name="description" content="">
    <meta name="author" content="">
 
-   <title>Chill Spots</title>
+   <title>Chillspots</title>
 
    <!-- Bootstrap Core jQuery -->
    <script src="https://use.fontawesome.com/daf5a949cf.js"></script>
@@ -44,9 +44,7 @@
  <title></title>
 
 </head>
-
-<body>
-  <div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="nav">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -54,23 +52,26 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-          <a class="navbar-brand" href="/">Chillspots</a>
+          <a class="navbar-brand" href="/">chill // spots</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
+            <li><a href="/">home</a></li>
             <% if current_user %>
-              <li><a href="/users/logout">Logout</a></li>
+              <li><a href="/users/logout">logout</a></li>
             <% else %>
-              <li><a href="/users/login">Login</a></li>
+              <li><a href="/users/login">login</a></li>
             <% end %>
             <% unless current_user %>
-              <li><a href="/users/new">Signup</a></li>
+              <li><a href="/users/new">signup</a></li>
             <% end %>
           </ul>
         </div>
       </div>
   </div>
+
+<body>
+
 
   <%= yield %>
 <script src="https://maps.googleapis.com/maps/api/js?callback=window.initMap" async defer></script>

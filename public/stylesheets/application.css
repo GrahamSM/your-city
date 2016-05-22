@@ -1,7 +1,70 @@
 /*HOME PAGE*/
 
 body{
-  padding-top:31px;
+  font-size: 18px;
+  padding-top:30;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    color: #00c2ff;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    margin-top: 8px;
+    color:white;
+    font-family: 'Muli';
+    font-weight: 400;
+    line-height: 33px;
+    background-color: #00c2ff;
+    border: solid;
+    border-width: 1px;
+    border-color: #00c2ff;
+    display: inline-block;
+    text-align:center;
+    width: 120px;
+    height: 35px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: white;
+    border-width: 1px;
+    transition:0.3s;
+    border-color: #00c2ff;
+    color: #00c2ff;
+}
+
+.btn {
+  border-radius: 0;
+  border-color: #00c2ff;
+  background-color: #00c2ff;
+  color: white;
+  margin: 1px;
+}
+
+.btn:hover{
+  background-color: white;
+  border-color: #00c2ff;
+  color:#00c2ff;
+  transition:0.3s;
+}
+
+.btn.active, .btn:active {
+    background-color: white;
+    border-color: #00c2ff;
+    color:#00c2ff;
+    -webkit-box-shadow: none;
 }
 
 .inputfile {
@@ -63,6 +126,7 @@ body{
 a, a:visited, a:hover, a:active {
     text-decoration: none;
     color: inherit;
+    font-size: 18;
 }
 
 #java-div{
@@ -77,8 +141,9 @@ a, a:visited, a:hover, a:active {
 #city-list-home{
   list-style: none;
   margin-right: auto;
-  margin-left:auto;
-  margin-top: 125px;
+  margin-left:125px;
+  margin-top: 100px;
+  max-width: 250px;
 }
 
 #city-item{
@@ -90,9 +155,11 @@ a, a:visited, a:hover, a:active {
   width: 250px;
   height: 50px;
   text-align: center;
+  line-height: 25px;
   padding-top: 12px;
   color:black;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.81);
+  color: #00c2ff;
 }
 
 #city-item:hover{
@@ -107,8 +174,9 @@ a, a:visited, a:hover, a:active {
 }
 
 #home{
-  /*background-image: url("http://afashiony.com/wp-content/uploads/2014/10/wpid-Tumblr-Palm-Trees-Looking-Up-2015-2016-0.jpg");*/
-  background-size: 1300px 900px;
+  background-image:url("/images/pineapple.jpg");
+  background-repeat: no-repeat;
+  background-size: 1500px 1100px;
 }
 
 /*END HOME PAGE*/
@@ -140,7 +208,7 @@ a, a:visited, a:hover, a:active {
        padding: 5px;
        border: 1px solid #999;
        text-align: center;
-       font-family: 'Roboto','sans-serif';
+       font-family: 'Muli';
        line-height: 30px;
        padding-left: 10px;
        margin-top:50px;
@@ -272,7 +340,7 @@ a, a:visited, a:hover, a:active {
   }
 
 #category-grid{
-  margin-top:20px;
+
 }
 
 .section-heading {
@@ -321,7 +389,7 @@ a, a:visited, a:hover, a:active {
 .category .category-caption .category-caption-content .project-category,
 .category .category-caption .category-caption-content .project-name {
     padding: 0 15px;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-family: 'Muli';
 }
 
 .category .category-caption .category-caption-content .project-category {
