@@ -30,7 +30,7 @@
                         <span class="label label-default"><%= spot.vibes[2].label if spot.vibes[2] %></span>
                         <br>
 
-                        <img id = "chill-spot-img" alt="No image" height="32" src="images/<%= spot.id %>_spot_image.jpg"/>
+                      <img id = "chill-spot-img" alt="No image" height="32" src="images/<%= spot.id %>_spot_image.jpg"/>
 
                       <div class="wrap">
                         <div class="vote up">
@@ -169,23 +169,24 @@ $(function(){
       getSpotsInfo();
     })
 
+    $("li.chill-spot .wrap").on('click', function(e) {
+      var target = $(e.target);
+      var form = target.closest('form');
+      debugger
+      e.preventDefault();
+
+      $.ajax({
+        url: form.attr('action'),
+        type: 'POST',
+        data: form.serialize()
+      }).done(function() {
+        $("li.chill-spot .wrap").closest("stat")
+      })
+    }); ///FINISH THIS TOMORROW!!!
+
     function initMap() {
       getData()
     }
-   //
-  //   $(".vote").click(function(){
-  //     debugger
-  //      var count = parseInt($("~ .score", this).text());
-   //
-  //      if($(this).hasClass("up")) {
-  //        var score = score + 1;
-   //
-  //         $("~ .score", this).text(count);
-  //      } else {
-  //        var count = count - 1;
-  //         $("~ .score", this).text(count);
-  //      }
-  //  }
 
 
 </script>
