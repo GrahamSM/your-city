@@ -59,7 +59,6 @@
       @current_city.save
       @spot.save
       @current_category = Category.find_by(id: params[:category_selection])
-      binding.pry
       redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
 
     else
@@ -105,17 +104,17 @@ get '/city' do
 end
 
 get '/city_data' do
-  @current_city = City.first
-  @current_category = Category.first
+  @current_city = City.find(params[:city].to_i)
+  @current_category = Category.find(params[:category].to_i)
   @current_spots = @current_city.spots
   my_hash = {city: @current_city, category: @current_category, spots: @current_spots}
   my_data = my_hash.to_json
 end
 
 get '/filtered_spots' do
-  @current_spots = City.first.spots
+  @current_spots = City.find(params[:city].to_i).spots
   if params[:options]
-    @current_spots = City.first.spots.includes(:vibes).where('vibes.label IN (?)', params[:options]).references(:vibes)
+    @current_spots = City.find(params[:city].to_i).spots.includes(:vibes).where('vibes.label IN (?)', params[:options]).references(:vibes)
   end
   @current_spots.to_json
 end

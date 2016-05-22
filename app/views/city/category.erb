@@ -91,7 +91,7 @@ $(function(){
 
     var getData = function() {
       $.ajax({
-        url:'/city_data',
+        url:'/city_data?city=<%=@current_city.id%>&category=<%=@current_category.id%>',
         data: filters,
         success: function(data) {
           all_data = JSON.parse(data)
@@ -110,7 +110,7 @@ $(function(){
             var marker = new google.maps.Marker({
                position: myLatLng,
                map: window.map,
-              label: (spots[i].id).toString()
+              label: i.toString()
              });
             gMarkers.push(marker);
           };
@@ -120,7 +120,7 @@ $(function(){
 
     var getSpotsInfo = function() {
       $.ajax({
-        url: '/filtered_spots',
+        url: '/filtered_spots?city=<%=@current_city.id%>',
         data: filters,
         success: renderSpots,
         dataType: 'JSON'
@@ -149,7 +149,6 @@ $(function(){
       for (var i = 0; i<spots.length; i++){
         spot_ids.push(spots[i].id);
       };
-      debugger
       $(".chill-spot").each(function(i, obj){
         var id = $(this).data('spot-id');
         if (spot_ids.indexOf(id) === -1){
@@ -170,7 +169,6 @@ $(function(){
     $("li.chill-spot .wrap").on('click', function(e) {
       var target = $(e.target);
       var form = target.closest('form');
-      debugger
       e.preventDefault();
 
       $.ajax({
