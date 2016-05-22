@@ -318,12 +318,8 @@ a, a:visited, a:hover, a:active {
     text-align: center;
     padding: 10px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 12%;
     margin-bottom: 10px;
-  }
-
-  #mood-button:hover{
-    background-color: #99b3ff;
   }
 
   .add_spot_btn{
