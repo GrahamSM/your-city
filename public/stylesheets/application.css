@@ -120,13 +120,13 @@ body{
     background-color: white;
     border-color: #00c2ff;
     color:#00c2ff;
-    -webkit-box-shadow: none; 
+    -webkit-box-shadow: none;
 }
 
 #home-text{
   font-size: 100px;
   margin-top: 100px;
-  margin-right: 75px
+  margin-right: 75px;
 }
 
 a, a:visited, a:hover, a:active {
