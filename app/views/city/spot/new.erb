@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-6" id="form-new-spot">
       <form class ="form-group row" method="post" action="/city/<%=@current_city.name%>/new" enctype="multipart/form-data">
-      <h1 class="form-signin-heading text-muted">Add a Spot</h1>
+      <h1 class="form-signin-heading">Add a Spot</h1>
         <div class="row">
            <label class="form-signin-heading text-muted">Name:</label>
            <input class="form-control" type="text" name="title" placeholder="Name" >
@@ -48,26 +48,26 @@
             </select>
         </div>
         <div class="row">
-          <label  class="form-signin-heading text-muted">Upload Image</label>
-          <input type="file" name="file">
+            <input type="file" name="file" id="file" class="inputfile" />
+            <label for="file">Upload Image</label>
         </div>
         <div class="row">
           <div class="input-group" data-toggle="buttons">
-              <label class="btn btn-primary">
+              <label class="btn">
               <input type="checkbox" autocomplete="off" name="vibe_one" value = "<%=Vibe.all[0].id%>"><%= Vibe.all[0].label %></label>
-              <label class="btn btn-primary">
+              <label class="btn">
               <input type="checkbox" autocomplete="off" name="vibe_two" value = "<%=Vibe.all[1].id%>"><%= Vibe.all[1].label %></label>
-              <label class="btn btn-primary">
+              <label class="btn">
               <input type="checkbox" autocomplete="off" name="vibe_three" value = "<%=Vibe.all[2].id%>"><%= Vibe.all[2].label %></label>
-              <label class="btn btn-primary">
+              <label class="btn">
               <input type="checkbox" autocomplete="off" name="vibe_three" value = "<%=Vibe.all[2].id%>"><%= Vibe.all[3].label %></label>
-              <label class="btn btn-primary">
+              <label class="btn">
               <input type="checkbox" autocomplete="off" name="vibe_three" value = "<%=Vibe.all[2].id%>"><%= Vibe.all[4].label %></label>
           </div>
         </div>
         <div class="row" id = "form-group-row">
           <div class="input-group">
-            <button type="submit" class="btn btn-lg btn-primary btn-block">Create Spot</button>
+            <button type="submit" class="btn btn-md btn-primary btn-block">Create Spot</button>
           </div>
         </div>
         <div class="row">
@@ -84,7 +84,7 @@
 <script>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
+      zoom: 15,
       center: {lat: -34.397, lng: 150.644}
     });
     var geocoder = new google.maps.Geocoder();

@@ -4,6 +4,62 @@ body{
   padding-top:31px;
 }
 
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    margin-top: 8px;
+    color:white;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 400;
+    line-height: 33px;
+    background-color: #00c2ff;
+    border: solid;
+    border-width: 1px;
+    border-color: #00c2ff;
+    display: inline-block;
+    text-align:center;
+    width: 120px;
+    height: 35px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: white;
+    border-width: 1px;
+    transition:0.3s;
+    border-color: #00c2ff;
+    color: #00c2ff;
+}
+
+.btn {
+  border-radius: 0;
+  border-color: #00c2ff;
+  background-color: #00c2ff;
+  color: white;
+  margin: 1px;
+}
+
+.btn:hover{
+  background-color: white;
+  border-color: #00c2ff;
+  color:#00c2ff;
+  transition:0.3s;
+}
+
+.btn.active, .btn:active {
+    background-color: white;
+    border-color: #00c2ff;
+    color:#00c2ff;
+    -webkit-box-shadow: none; 
+}
+
 a, a:visited, a:hover, a:active {
     text-decoration: none;
     color: inherit;
