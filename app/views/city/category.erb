@@ -18,9 +18,12 @@
           <div id="container-grid">
             <ul id="chill-spot-list">
               <% spots = @current_city.spots.all.where(category_id: @current_category.id).order(num_votes: :desc) %>
+              <% i = 1 %>
               <% spots.each do |spot| %>
+
                   <li class="chill-spot" data-spot-id="<%= spot.id %>">
                     <h3><%= spot.title %></h3>
+                    <h5>Spot #: <%= i %></h5>
                     <p>
                       <%= spot.description %>
 
@@ -30,28 +33,29 @@
                         <br>
 
                       <img id = "chill-spot-img" alt="No image" height="32" src="images/<%= spot.id %>_spot_image.jpg"/>
-
-                      <div class="wrap">
-                        <div class="vote up">
-                          <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
-                            <button type="submit">
-                              <i class="fa fa-angle-up"></i>
-                            </button>
-                          </form>
-                        </div>
-                        <div class="stat">
-                          <span class="score"><%=spot.num_votes || 0%>
-                          </span>
-                        </div>
-                        <div class="vote down">
-                          <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
-                            <button type="submit">
-                              <i class="fa fa-angle-down"></i>
-                            </button>
-                          </form>
+                        <div class="wrap">
+                          <div class="vote up">
+                            <form action="<%=@current_city.name %>/<%= @current_category.name%>/upvote/spot/<%= spot.id %>" method="post">
+                              <button type="submit">
+                                <i class="fa fa-angle-up"></i>
+                              </button>
+                            </form>
+                          </div>
+                          <div class="stat">
+                            <span class="score"><%=spot.num_votes || 0%>
+                            </span>
+                          </div>
+                          <div class="vote down">
+                            <form action="<%=@current_city.name %>/<%= @current_category.name%>/downvote/spot/<%= spot.id %>" method="post">
+                              <button type="submit">
+                                <i class="fa fa-angle-down"></i>
+                              </button>
+                            </form>
+                          </div>
                         </div>
                       </p>
                     </li>
+                  <% i+=1 %>
                 <% end %>
               </ul>
             </div>
@@ -110,7 +114,7 @@ $(function(){
             var marker = new google.maps.Marker({
                position: myLatLng,
                map: window.map,
-              label: i.toString()
+              label: (i+1).toString()
              });
             gMarkers.push(marker);
           };
@@ -176,7 +180,7 @@ $(function(){
         type: 'POST',
         data: form.serialize()
       }).done(function() {
-        $("li.chill-spot .wrap").closest("stat")
+        target.closest("stat")
       })
     }); ///FINISH THIS TOMORROW!!!
 
