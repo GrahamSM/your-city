@@ -1,5 +1,4 @@
 /*HOME PAGE*/
-
 body{
   font-size: 18px;
   padding-top:30;
@@ -417,6 +416,7 @@ a, a:visited, a:hover, a:active {
 
 .category .category-caption .category-caption-content .project-name {
     font-size: 18px;
+    font-family: 'Muli';
 }
 
 .category:hover .category-caption {

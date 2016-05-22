@@ -46,8 +46,8 @@ task "db:populate" do
   Category.create!(name: "Food & Drink")
   Category.create!(name: "Art & Music")
   Category.create!(name: "Hidden Gems")
-  Category.create!(name: "No Name")
-  Category.create!(name: "No Name Two")
+  Category.create!(name: "Family Friendly")
+  Category.create!(name: "Hobbies")
 
   10.times do |i|
     User.create!(username: Faker::Internet.user_name, password: Faker::Internet.password(10), email: Faker::Internet.safe_email)
