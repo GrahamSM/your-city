@@ -105,7 +105,7 @@ $(function(){
           var mapDiv = document.getElementById('map');
           window.map = new google.maps.Map(mapDiv, {
             center: {lat: city_lat, lng: city_lon},
-            zoom: 10
+            zoom: 15
           });
           for (var i = 0; i < spots.length; i++){
             var myLatLng = {lat: parseFloat(spots[i].latitude), lng: parseFloat(spots[i].longitude)}
