@@ -28,7 +28,7 @@
                         <span class="label label-default"><%= spot.vibes[1].label if spot.vibes[1] %></span>
                         <span class="label label-default"><%= spot.vibes[2].label if spot.vibes[2] %></span>
                         <br>
-                        
+
                       <img id = "chill-spot-img" height="32" src="images/<%= spot.id %>_spot_image.jpg" alt="images/kiwi.jpg"/>
 
 
@@ -56,9 +56,11 @@
                 <% end %>
               </ul>
             </div>
-            <div class="add_spot_btn">
-              <a href="/city/<%=@current_city.name%>/new"><button type="link" class="btn btn-lg btn-block">Add a spot</button></a>
-            </div>
+            <% if current_user %>
+              <div class="add_spot_btn">
+                <a href="/city/<%=@current_city.id%>/new"><button type="link" class="btn btn-lg btn-block">Add a spot</button></a>
+              </div>
+            <% end %>
           </div>
         </div>
     </div>
