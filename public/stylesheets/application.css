@@ -361,6 +361,10 @@ a, a:visited, a:hover, a:active {
     position: relative;
     margin: 0 auto;
     max-width: 650px;
+          padding-left:1px;
+          padding-right:1px;
+          padding-bottom:1px;
+          padding-top:1px;
 }
 
 .category .category-caption {
@@ -372,10 +376,11 @@ a, a:visited, a:hover, a:active {
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
+    background: rgba(0, 194, 255, 0.75);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
+
 }
 
 .category .category-caption .category-caption-content {
