@@ -302,7 +302,7 @@ a, a:visited, a:hover, a:active {
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
+    background: rgba(0, 194, 255, 0.75);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
