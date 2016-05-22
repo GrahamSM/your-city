@@ -367,6 +367,10 @@ a, a:visited, a:hover, a:active {
     position: relative;
     margin: 0 auto;
     max-width: 650px;
+          padding-left:1px;
+          padding-right:1px;
+          padding-bottom:1px;
+          padding-top:1px;
 }
 
 .category .category-caption {
@@ -382,6 +386,7 @@ a, a:visited, a:hover, a:active {
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
+
 }
 
 .category .category-caption .category-caption-content {
