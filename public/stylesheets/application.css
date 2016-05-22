@@ -157,7 +157,7 @@ a, a:visited, a:hover, a:active {
   border: solid;
   border-width: 1px;
   border-color: #00c2ff;
-  border-radius: 0.5px;
+  border-radius: 5px;
   width: 250px;
   height: 50px;
   text-align: center;
@@ -378,7 +378,7 @@ a, a:visited, a:hover, a:active {
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
+    background: rgba(0, 194, 255, 0.75);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
