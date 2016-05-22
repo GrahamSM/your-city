@@ -18,9 +18,12 @@
           <div id="container-grid">
             <ul id="chill-spot-list">
               <% spots = @current_city.spots.all.where(category_id: @current_category.id).order(num_votes: :desc) %>
+              <% i = 1 %>
               <% spots.each do |spot| %>
+
                   <li class="chill-spot" data-spot-id="<%= spot.id %>">
                     <h3><%= spot.title %></h3>
+                    <h5>Spot #: <%= i %></h5>
                     <p>
                       <%= spot.description %>
 
@@ -28,8 +31,9 @@
                         <span class="label label-default"><%= spot.vibes[1].label if spot.vibes[1] %></span>
                         <span class="label label-default"><%= spot.vibes[2].label if spot.vibes[2] %></span>
                         <br>
+                        
+                      <img id = "chill-spot-img" height="32" src="images/<%= spot.id %>_spot_image.jpg" alt="images/kiwi.jpg"/>
 
-                      <img id = "chill-spot-img" alt="No image" height="32" src="images/<%= spot.id %>_spot_image.jpg"/>
 
                       <div class="wrap">
                         <div class="vote up">
@@ -49,12 +53,19 @@
                               <i class="fa fa-angle-down"></i>
                             </button>
                           </form>
+>>>>>>> josh_front_end
                         </div>
                       </p>
                     </li>
+                  <% i+=1 %>
                 <% end %>
               </ul>
             </div>
+            <% if current_user %>
+              <div class="add_spot_btn">
+                <a href="/city/<%=@current_city.id%>/new"><button type="link" class="btn btn-lg btn-block">Add a spot</button></a>
+              </div>
+            <% end %>
           </div>
         </div>
     </div>
@@ -110,7 +121,15 @@ $(function(){
             var marker = new google.maps.Marker({
                position: myLatLng,
                map: window.map,
+<<<<<<< HEAD
+              label: (i+1).toString()
+=======
+<<<<<<< HEAD
+              label: (spots[i].id).toString()
+=======
               label: i.toString()
+>>>>>>> master
+>>>>>>> josh_front_end
              });
             gMarkers.push(marker);
           };
@@ -149,6 +168,10 @@ $(function(){
       for (var i = 0; i<spots.length; i++){
         spot_ids.push(spots[i].id);
       };
+<<<<<<< HEAD
+      debugger
+=======
+>>>>>>> master
       $(".chill-spot").each(function(i, obj){
         var id = $(this).data('spot-id');
         if (spot_ids.indexOf(id) === -1){
@@ -169,6 +192,10 @@ $(function(){
     $("li.chill-spot .wrap").on('click', function(e) {
       var target = $(e.target);
       var form = target.closest('form');
+<<<<<<< HEAD
+      debugger
+=======
+>>>>>>> master
       e.preventDefault();
 
       $.ajax({
@@ -176,7 +203,7 @@ $(function(){
         type: 'POST',
         data: form.serialize()
       }).done(function() {
-        $("li.chill-spot .wrap").closest("stat")
+        target.closest("stat")
       })
     }); ///FINISH THIS TOMORROW!!!
 
