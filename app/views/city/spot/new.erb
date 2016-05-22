@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <div id="map"></div>
       <div id="floating-panel-new">
-        <input id="address" type="textbox" value="Sydney, NSW">
+        <input id="address" type="textbox" value="Your spot here!">
         <input id="submit" type="button" value="Please enter a location">
       </div>
     </div>
@@ -80,8 +80,8 @@
 <script>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: {lat: -34.397, lng: 150.644}
+      zoom: 5,
+      center: {lat: 56.1304, lng: -106.3468}
     });
     var geocoder = new google.maps.Geocoder();
 
