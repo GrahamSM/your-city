@@ -17,7 +17,7 @@
   end
 
   get '/city/:city/new' do
-    @current_city = City.find_by(name: params[:city])
+    @current_city = City.find(params[:city].to_i)
     @vibes = Vibe.all
     @categories = Category.all
     @spot = Spot.new
@@ -60,6 +60,7 @@
       @spot.save
       @current_category = Category.find_by(id: params[:category_selection])
       redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
+
     else
       erb :'city/spot/new'
     end
@@ -85,13 +86,13 @@
     redirect '/'
   end
 
-  get '/city/:city' do
-    @current_city = City.find_by(name: params[:city])
-    erb :'city/categories'
-  end
+get '/city/:city' do
+  @current_city = City.find_by(name: params[:city])
+  erb :'city/categories'
+end
 
 get '/city/:city/:id' do
-  @current_city = City.find_by(name: params[:city])
+  @current_city = City.find(params[:city])
   @current_category = Category.find(params[:id])
   redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
 end
@@ -103,17 +104,17 @@ get '/city' do
 end
 
 get '/city_data' do
-  @current_city = City.first
-  @current_category = Category.first
+  @current_city = City.find(params[:city].to_i)
+  @current_category = Category.find(params[:category].to_i)
   @current_spots = @current_city.spots
   my_hash = {city: @current_city, category: @current_category, spots: @current_spots}
   my_data = my_hash.to_json
 end
 
 get '/filtered_spots' do
-  @current_spots = City.first.spots
+  @current_spots = City.find(params[:city].to_i).spots
   if params[:options]
-    @current_spots = City.first.spots.includes(:vibes).where('vibes.label IN (?)', params[:options]).references(:vibes)
+    @current_spots = City.find(params[:city].to_i).spots.includes(:vibes).where('vibes.label IN (?)', params[:options]).references(:vibes)
   end
   @current_spots.to_json
 end
@@ -128,7 +129,7 @@ post '/:city/:category/upvote/spot/:id' do
   @current_spot.save
   @current_category = Category.find_by(name: params[:category])
   @current_city = City.find_by(name: params[:city])
-  redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
+  redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
 end
 
 post '/:city/:category/downvote/spot/:id' do
@@ -141,7 +142,7 @@ post '/:city/:category/downvote/spot/:id' do
   @current_spot.save
   @current_category = Category.find_by(name: params[:category])
   @current_city = City.find_by(name: params[:city])
-  redirect "/city?city=#{@current_city.name}&category=#{@current_category.name}"
+  redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
 end
 
 get '/upvote' do

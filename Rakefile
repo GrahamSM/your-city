@@ -25,10 +25,12 @@ end
 
 desc "Imports a CSV file into an ActiveRecord table"
 task "db:populate" do
-  1.times do |i|
-    City.create!(name: "Toronto", latitude: "43.6532", longitude: "79.3832")
-  end
-
+  City.create!(name: "Toronto", latitude: "43.6532", longitude: "79.3832")
+  City.create!(name: "Ottawa", latitude: "45.4215", longitude: "75.6972")
+  City.create!(name: "Vancouver", latitude: "49.2827", longitude: "123.1207")
+  City.create!(name: "Montreal", latitude: "45.5017", longitude: "73.5673")
+  City.create!(name: "Halifax", latitude: "44.6488", longitude: "63.5752")
+  City.create!(name: "Calgary", latitude: "51.0486", longitude: "114.0708")
 
   Vibe.create!(label: "Exciting")
   Vibe.create!(label: "Romantic")

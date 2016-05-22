@@ -67,10 +67,77 @@ body{
     -webkit-box-shadow: none;
 }
 
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    margin-top: 8px;
+    color:white;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 400;
+    line-height: 33px;
+    background-color: #00c2ff;
+    border: solid;
+    border-width: 1px;
+    border-color: #00c2ff;
+    display: inline-block;
+    text-align:center;
+    width: 120px;
+    height: 35px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: white;
+    border-width: 1px;
+    transition:0.3s;
+    border-color: #00c2ff;
+    color: #00c2ff;
+}
+
+.btn {
+  border-radius: 0;
+  border-color: #00c2ff;
+  background-color: #00c2ff;
+  color: white;
+  margin: 1px;
+}
+
+.btn:hover{
+  background-color: white;
+  border-color: #00c2ff;
+  color:#00c2ff;
+  transition:0.3s;
+}
+
+.btn.active, .btn:active {
+    background-color: white;
+    border-color: #00c2ff;
+    color:#00c2ff;
+    -webkit-box-shadow: none;
+}
+
+#home-text{
+  font-size: 100px;
+  margin-top: 100px;
+  margin-right: 75px;
+}
+
 a, a:visited, a:hover, a:active {
     text-decoration: none;
     color: inherit;
     font-size: 18;
+}
+
+#java-div{
+  border: solid;
+  border-color: black;
 }
 
 #home-title{
@@ -134,7 +201,7 @@ a, a:visited, a:hover, a:active {
     padding-right: 250px;
     border-radius: 5px;
     margin-right: 10px;
-    height: 60%;
+    height: 10%;
     padding-top:1000px
 }
 
@@ -162,17 +229,21 @@ a, a:visited, a:hover, a:active {
 }
 
 #chill-spot-list{
-
+  overflow-y: scroll;
+  overflow-y: scroll;
+  list-style: none;
+  max-height: 550px;
+  margin-bottom: 50px;
 }
 
-#chill-spot{
+.chill-spot{
   float: right;
   list-style-type: none;
   border: 0.5px;
   width: 600px;
   max-height: 350px;
   border-style: solid;
-  border-color: black;
+  border-color: #00c2ff;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -181,7 +252,11 @@ a, a:visited, a:hover, a:active {
   border-radius: 5px;
 }
 
-#chill-spot:active{
+.chill-spot p {
+  display: inline-block;
+}
+
+.chill-spot:active{
 }
 
 #mood-container{
@@ -189,6 +264,7 @@ a, a:visited, a:hover, a:active {
 }
 #mood-selectors{
   margin-top:10px;
+  margin-left: 10px;
 }
 
 #mood{
@@ -297,6 +373,10 @@ a, a:visited, a:hover, a:active {
     position: relative;
     margin: 0 auto;
     max-width: 650px;
+          padding-left:1px;
+          padding-right:1px;
+          padding-bottom:1px;
+          padding-top:1px;
 }
 
 .category .category-caption {
@@ -312,6 +392,7 @@ a, a:visited, a:hover, a:active {
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
+
 }
 
 .category .category-caption .category-caption-content {
