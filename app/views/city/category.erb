@@ -17,12 +17,10 @@
         <div class = "row">
           <div id="container-grid">
             <ul id="chill-spot-list">
-              <%= spots = @current_city.spots.all.order(num_votes: :desc) %>
+              <% spots = @current_city.spots.all.where(category_id: @current_category.id).order(num_votes: :desc) %>
               <% spots.each do |spot| %>
-                <% if spot.title %>
-                  <li id="chill-spot">
+                  <li class="chill-spot" data-spot-id="<%= spot.id %>">
                     <h3><%= spot.title %></h3>
-                    <h5><%= spot.location %></h5>
                     <p>
                       <%= spot.description %>
 
@@ -31,12 +29,7 @@
                         <span class="label label-default"><%= spot.vibes[2].label if spot.vibes[2] %></span>
                         <br>
 
-                        <img id = "chill-spot-img" alt="No image" height="32" src="images/<%= spot.id %>_spot_image.jpg"/>
-
-
-                     <!-- PLACEHOLDER FOR IMAGES ONCE THEY ARE CREATED IN PUBLIC/IMG/ AND THE UPLOADED SPOT IMAGE FROM USER WILL BE IN THERE WITH AN ID. IN THE BELOW EXAMPLE, IT IS GIVING EXAMPLE OF IMAGE FROM:
-                     A = #{SPOT.ID}_SPOT_PHOTO.JPG CODE CRAP
-                         <p><img src="/public/images/a">  -->
+                      <img id = "chill-spot-img" height="32" src="images/<%= spot.id %>_spot_image.jpg" alt="images/kiwi.jpg"/>
 
                       <div class="wrap">
                         <div class="vote up">
@@ -59,9 +52,11 @@
                         </div>
                       </p>
                     </li>
-                  <% end %>
                 <% end %>
               </ul>
+            </div>
+            <div class="input-group">
+              <button type="link" class="btn btn-lg btn-primary btn-block">Add a spot</button>
             </div>
           </div>
         </div>
@@ -117,7 +112,8 @@ $(function(){
             var myLatLng = {lat: parseFloat(spots[i].latitude), lng: parseFloat(spots[i].longitude)}
             var marker = new google.maps.Marker({
                position: myLatLng,
-               map: window.map
+               map: window.map,
+              label: (spots[i].id).toString()
              });
             gMarkers.push(marker);
           };
@@ -135,7 +131,6 @@ $(function(){
     }
 
     var renderSpots = function(spots) {
-      $('#chill-spot-list').empty()
       for (var j = 0; j < gMarkers.length; j++) {
         gMarkers[j].setMap(null);
       }
@@ -144,7 +139,8 @@ $(function(){
         var myLatLng = {lat: parseFloat(spots[i].latitude), lng: parseFloat(spots[i].longitude)}
         var marker = new google.maps.Marker({
            position: myLatLng,
-           map: window.map
+           map: window.map,
+           label: (spots[i].id).toString()
          });
         gMarkers.push(marker);
       };
@@ -152,7 +148,20 @@ $(function(){
     }
 
     var displaySpots = function(spots) {
-      $('#chill-spot-list').append('<p>' + spots[0].title + '<p>')
+      var spot_ids = [];
+      for (var i = 0; i<spots.length; i++){
+        spot_ids.push(spots[i].id);
+      };
+      debugger
+      $(".chill-spot").each(function(i, obj){
+        var id = $(this).data('spot-id');
+        if (spot_ids.indexOf(id) === -1){
+          $(this).hide();
+        }
+        else{
+          $(this).show();
+        }
+      });
     }
 
     $(':checkbox').change(function() {
@@ -161,11 +170,27 @@ $(function(){
       getSpotsInfo();
     })
 
+    $("li.chill-spot .wrap").on('click', function(e) {
+      var target = $(e.target);
+      var form = target.closest('form');
+      debugger
+      e.preventDefault();
+
+      $.ajax({
+        url: form.attr('action'),
+        type: 'POST',
+        data: form.serialize()
+      }).done(function() {
+        $("li.chill-spot .wrap").closest("stat")
+      })
+    }); ///FINISH THIS TOMORROW!!!
+
     function initMap() {
       getData()
-  }
-</script>
+    }
+
 
 </script>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
