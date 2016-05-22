@@ -17,9 +17,8 @@
         <div class = "row">
           <div id="container-grid">
             <ul id="chill-spot-list">
-              <% spots = @current_city.spots.all.order(num_votes: :desc) %>
+              <% spots = @current_city.spots.all.where(category_id: @current_category.id).order(num_votes: :desc) %>
               <% spots.each do |spot| %>
-                <% if spot.title %>
                   <li class="chill-spot" data-spot-id="<%= spot.id %>">
                     <h3><%= spot.title %></h3>
                     <p>
@@ -53,7 +52,6 @@
                         </div>
                       </p>
                     </li>
-                  <% end %>
                 <% end %>
               </ul>
             </div>

@@ -59,7 +59,9 @@
       @current_city.save
       @spot.save
       @current_category = Category.find_by(id: params[:category_selection])
+      binding.pry
       redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
+
     else
       erb :'city/spot/new'
     end
