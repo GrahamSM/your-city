@@ -322,9 +322,6 @@ a, a:visited, a:hover, a:active {
     margin-bottom: 10px;
   }
 
-  #mood-button:hover{
-    background-color: #99b3ff;
-  }
 
   .add_spot_btn{
     margin-left:auto;
@@ -350,8 +347,8 @@ a, a:visited, a:hover, a:active {
     margin-right: auto;
   }
 
-#category-grid{
-
+#no-spots{
+  text-align:center;
 }
 
 .section-heading {

@@ -4,12 +4,12 @@
     <div class="col-md-6">
       <div class="row">
         <div class="row" id = "mood-selectors">
-          <div class="col-md-5 col-md-offset-1" id = "mood-button">
-            <input type="checkbox" name="Exciting" value="Exciting">Exciting
-            <input type="checkbox" name="Romantic" value="Romantic">Romantic
-            <input type="checkbox" name="Relaxing" value="Relaxing">Relaxing
-            <input type="checkbox" name="Rewarding" value="Rewarding">Rewarding
-            <input type="checkbox" name="Stimulating" value="Stimulating">Stimulating
+          <div id = "mood-button">
+            <label class="radio-inline"><input type="radio" name="optradio">Exciting</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Romantic</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Relaxing</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Rewarding</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Stimulating</label>
           </div>
         </div>
         <div class = "row">
@@ -17,6 +17,9 @@
             <ul id="chill-spot-list">
               <% spots = @current_city.spots.all.where(category_id: @current_category.id).order(num_votes: :desc) %>
               <% i = 1 %>
+              <% if spots.empty? %>
+                <h4 id="no-spots"> There are currently no chill spots for <%= @current_city.name %>!</h4>
+              <% end %>
               <% spots.each do |spot| %>
                   <li class="chill-spot" data-spot-id="<%= spot.id %>">
                     <h3><%= spot.title %></h3>
