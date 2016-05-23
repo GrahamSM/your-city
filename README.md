@@ -1,10 +1,5 @@
-Sinatra
+Your City
 =============
 
-Brought to you by Lighthouse Labs
+A simple way to discover what Canadian city's have to offer.
 
-## Getting Started
-
-1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
