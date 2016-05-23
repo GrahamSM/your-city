@@ -123,8 +123,8 @@ body{
 }
 
 #home-text{
-  font-size: 100px;
-  margin-top: 100px;
+  font-size: 80px;
+  margin-top: 75px;
   margin-right: 75px;
 }
 
@@ -147,7 +147,7 @@ a, a:visited, a:hover, a:active {
   list-style: none;
   margin-right: auto;
   margin-left:125px;
-  margin-top: 100px;
+  margin-top: 75px;
   max-width: 250px;
 }
 
@@ -334,8 +334,7 @@ input[type="button" i], input[type="submit" i], input[type="reset" i], input[typ
   }
 
   .add_spot_btn{
-    margin-left:15%;
-    margin-right:auto;
+    margin:auto;
     width:150px;
   }
 
