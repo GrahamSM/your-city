@@ -11,7 +11,6 @@ class Spot < ActiveRecord::Base
   validate :spot_must_be_in_city
 
   def spot_must_be_in_city
-    binding.pry
     if latitude && longitude
       if (latitude.to_f.abs - City.find(city_id).latitude.to_f.abs).abs > 1 || (longitude.to_f.abs - City.find(city_id).longitude.to_i.abs).abs > 1
           errors.add(:spot, "must be in the current city!")

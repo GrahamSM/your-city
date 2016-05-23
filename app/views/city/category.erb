@@ -2,16 +2,23 @@
   <div class="row">
     <div class="col-md-6" id="map"></div>
     <div class="col-md-6">
-      <div class="row">
+
         <div class="row" id = "mood-selectors">
-          <div id = "mood-button">
-            <label class="radio-inline"><input type="radio" name="optradio">Exciting</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Romantic</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Relaxing</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Rewarding</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Stimulating</label>
+          <div class="input-group" data-toggle="buttons" id = "mood-button">
+            <label class="btn">
+            <input type="checkbox" autocomplete="off" name="Exciting" value="Exciting">Exciting</label>
+            <label class="btn">
+            <input type="checkbox" autocomplete="off" name="Romantic" value="Romantic">Romantic</label>
+            <label class="btn">
+            <input type="checkbox" autocomplete="off" name="Relaxing" value="Relaxing">Relaxing</label>
+            <label class="btn">
+            <input type="checkbox" autocomplete="off" name="Rewarding" value="Rewarding">Rewarding</label>
+            <label class="btn">
+            <input type="checkbox" autocomplete="off" name="Stimulating" value="Stimulating">Stimulating</label>
           </div>
         </div>
+
+
         <div class = "row">
           <div id="container-grid">
             <ul id="chill-spot-list">
@@ -26,6 +33,7 @@
                     <h5>Spot #: <%= i %></h5>
                     <p>
                       <%= spot.description %>
+                      <br>
                         <span class="label label-default"><%= spot.vibes[0].label if spot.vibes[0] %></span>
                         <span class="label label-default"><%= spot.vibes[1].label if spot.vibes[1] %></span>
                         <span class="label label-default"><%= spot.vibes[2].label if spot.vibes[2] %></span>
