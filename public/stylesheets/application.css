@@ -179,9 +179,9 @@ a, a:visited, a:hover, a:active {
 }
 
 #home{
-  background-image:url("/images/pineapple.jpg");
+  background-image:url("/images/mango.jpg");
   background-repeat: no-repeat;
-  background-size: 1500px 1100px;
+  background-size: 1500px 900px;
 }
 
 /*END HOME PAGE*/
@@ -192,6 +192,10 @@ a, a:visited, a:hover, a:active {
   width: 400px;
   margin-left: 70%;
   margin-right: 10%;
+}
+
+.row{
+  margin-bottom: 5px;
 }
 
 #map{
@@ -207,7 +211,7 @@ a, a:visited, a:hover, a:active {
 #floating-panel-new {
        position: absolute;
        top: 10px;
-       left: 25%;
+       left: 10%;
        z-index: 5;
        background-color: #fff;
        padding: 5px;
@@ -241,14 +245,13 @@ a, a:visited, a:hover, a:active {
   border: 0.5px;
   width: 600px;
   max-height: 350px;
-  border-style: solid;
-  border-color: #00c2ff;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-bottom: 3px solid;
+  border-color: #00c2ff;
 }
 
 .chill-spot p {
@@ -259,8 +262,8 @@ a, a:visited, a:hover, a:active {
 }
 
 #mood-container{
-
 }
+
 #mood-selectors{
   margin-top:10px;
   margin-left: 10px;
@@ -277,28 +280,35 @@ a, a:visited, a:hover, a:active {
 
 #chill-spot-img{
   margin-top:10px;
-  width:150px;
-  height: 100px;
+  width:220px;
+  height: 150px;
+  -webkit-box-shadow: 8px 3px 50px -10px rgba(0,0,0,0.65);
+  -moz-box-shadow: 8px 3px 50px -10px rgba(0,0,0,0.65);
+  box-shadow: 8px 3px 50px -10px rgba(0,0,0,0.65);
 }
+
 .wrap{
   float:right;
   margin:0;
   padding:0;
-}
-.wrap{
   text-align:center;
 }
+
 .vote{
   font-size:36px;
 }
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+  background-color:white;
+  border: none;
+}
 .up{
-  color:green;
+  color:#00c2ff;
 }
 .down{
-  color:red;
+  color:#00c2ff;
 }
 .inactive{
-  color:gray;
+  color:rgba(255, 255, 255, 0);
 }
 .score{
   position: relative;
@@ -314,17 +324,17 @@ a, a:visited, a:hover, a:active {
   margin-left:10px;
 }
 
+
   #mood-button{
     text-align: center;
     padding: 10px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 12%;
     margin-bottom: 10px;
   }
 
-
   .add_spot_btn{
-    margin-left:auto;
+    margin-left:15%;
     margin-right:auto;
     width:150px;
   }
@@ -335,8 +345,6 @@ a, a:visited, a:hover, a:active {
     margin-right: auto;
     padding: 10px;
     border-radius: 3px;
-    border: solid;
-    border-color: black;
     color: #D8000C;
     background-color: #FFBABA;
     width: 50%;
@@ -369,10 +377,6 @@ a, a:visited, a:hover, a:active {
     position: relative;
     margin: 0 auto;
     max-width: 650px;
-          padding-left:1px;
-          padding-right:1px;
-          padding-bottom:1px;
-          padding-top:1px;
 }
 
 .category .category-caption {
