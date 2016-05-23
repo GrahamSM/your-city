@@ -194,6 +194,19 @@ a, a:visited, a:hover, a:active {
   margin-right: 10%;
 }
 
+.signup-form{
+  max-width: 400px;
+}
+.signup-form .input-group{
+  margin-top:10px;
+}
+
+.login-form{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
+
 .row{
   margin-bottom: 5px;
 }
