@@ -13,18 +13,18 @@
   <div class="row" id ="row-new-spot">
     <div class="col-md-6">
       <div id="map"></div>
-      <div id="floating-panel-new">
-        <input id="address" type="textbox" placeholder="Enter your spot">
-        <input id="submit" type="button" value="Please enter a location">
+        <div id="floating-panel-new">
+          <input id="address" type="textbox" placeholder="Enter your spot">
+          <input id="submit" type="button" value="Please enter a location">
+        </div>
       </div>
-    </div>
     <div class="col-md-6" id="form-new-spot">
       <form class ="form-group row" method="post" action="/city/<%=@current_city.name%>/new" enctype="multipart/form-data">
-      <h1 class="form-signin-heading">Add a Spot</h1>
-        <div class="row">
-           <label class="form-signin-heading text-muted">Name:</label>
-           <input class="form-control" type="text" name="title" placeholder="Name" >
-        </div>
+        <h1 class="form-signin-heading">Add a Spot</h1>
+          <div class="row">
+            <label class="form-signin-heading text-muted">Name:</label>
+            <input class="form-control" type="text" name="title" placeholder="Name" >
+          </div>
         <div class="row">
            <label class="form-signin-heading text-muted">Description:</label>
            <input class="form-control" type="text" name="description" placeholder="Description">
@@ -41,11 +41,11 @@
               <option value="<%= Category.all[0].id %>"><%= Category.all[6].name %></option>
               <option value="<%= Category.all[1].id %>"><%= Category.all[7].name %></option>
             </select>
-        </div>
+          </div>
         <div class="row">
             <input type="file" name="file" id="file" class="inputfile" />
             <label for="file">Upload Image</label>
-        </div>
+          </div>
         <div class="row">
           <div class="input-group" data-toggle="buttons">
               <label class="btn">
