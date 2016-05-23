@@ -24,6 +24,9 @@
             <ul id="chill-spot-list">
               <% spots = @current_city.spots.all.where(category_id: @current_category.id).order(num_votes: :desc) %>
               <% i = 1 %>
+              <% if spots.empty? %>
+                <h4 id="no-spots"> There are currently no chill spots for <%= @current_city.name %>!</h4>
+              <% end %>
               <% spots.each do |spot| %>
                   <li class="chill-spot" data-spot-id="<%= spot.id %>">
                     <h3><%= spot.title %></h3>
