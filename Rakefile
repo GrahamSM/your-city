@@ -50,7 +50,7 @@ task "db:populate" do
   Category.create!(name: "Hobbies")
 
 
-  
+
 
 
 

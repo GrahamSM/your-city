@@ -81,6 +81,7 @@ DEPENDENCIES
   activesupport
   bcrypt
   faker
+  json
   pry
   puma
   rake

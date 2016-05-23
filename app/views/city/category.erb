@@ -177,8 +177,9 @@ $(function(){
         url: form.attr('action'),
         type: 'POST',
         data: form.serialize()
-      }).done(function() {
-        target.closest("stat")
+      }).done(function(response_data) {
+        // target.closest("stat")
+        $('.stat > .score').html(response_data.votes_count);
       })
     }); ///FINISH THIS TOMORROW!!!
     function initMap() {
