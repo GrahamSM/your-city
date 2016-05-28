@@ -4,10 +4,11 @@ class Spot < ActiveRecord::Base
   belongs_to :category
   belongs_to :city
   validates :title, presence: true, length: {minimum: 2}
-  validates :description, presence: true, length: {minimum: 10}
+  validates :description, presence: true, length: {minimum: 5}
   validates :latitude, presence: true
   validates :longitude, presence: true
-  validates :category_id, presence: true, length: {minimum: 1}
+  validates :category_id, presence: true
+  validates :image, presence: true
   validate :spot_must_be_in_city
 
   def spot_must_be_in_city
