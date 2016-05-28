@@ -48,19 +48,25 @@
     if params[:vibe_three]
       @spot.vibes << Vibe.find_by(id: params[:vibe_three].to_i)
     end
-    if @spot.save
+    if params[:vibe_four]
+      @spot.vibes << Vibe.find_by(id: params[:vibe_four].to_i)
+    end
+    if params[:file]
       @filename = "#{@spot.id}_spot_image.jpg"
       file_name = params["file"][:filename]
       File.open("./public/images/#{@filename}",'wb',) do |f|
         f.write(params["file"][:tempfile].read)
       end
       @spot.image = file_name
-      @current_city.spots << @spot
-      @current_city.save
+    else
       @spot.save
+      erb :'city/spot/new'
+    end
+    @current_city.spots << @spot
+    @current_city.save
+    if @spot.save
       @current_category = Category.find_by(id: params[:category_selection])
       redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
-
     else
       erb :'city/spot/new'
     end
