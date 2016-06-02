@@ -25,7 +25,7 @@
               <% spots.each do |spot| %>
                   <li class="chill-spot" data-spot-id="<%= spot.id %>">
                     <h3><%= spot.title %></h3>
-                    <h5>Spot #: <%= i %></h5>
+                    <h5>Spot #: <%= spot.id %></h5>
                     <p>
                       <%= spot.description %>
                       <br>
@@ -113,7 +113,7 @@ $(function(){
             var marker = new google.maps.Marker({
                position: myLatLng,
                map: window.map,
-              label: (i+1).toString()
+               label: (spots[i]).id.toString()
              });
             gMarkers.push(marker);
           };
