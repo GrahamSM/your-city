@@ -38,7 +38,7 @@
 
   post '/city/:city/new' do
     @current_city = City.find_by(name: params[:city])
-    @spot = Spot.new(title: params[:title], location: params[:location], description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long], category_id: params[:category_selection].to_i)
+    @spot = Spot.new(title: params[:title], location: params[:location], description: params[:description], city_id: @current_city.id, latitude: params[:lat].to_f, longitude: params[:long], category_id: params[:category_selection])
     if params[:vibe_one]
        @spot.vibes << Vibe.find_by(id: params[:vibe_one].to_i)
     end
@@ -114,6 +114,12 @@ get '/city_data' do
   @current_category = Category.find(params[:category].to_i)
   @current_spots = @current_city.spots
   my_hash = {city: @current_city, category: @current_category, spots: @current_spots}
+  my_data = my_hash.to_json
+end
+
+get '/city_data_new' do
+  @current_city = City.find(params[:city].to_i)
+  my_hash = {city: @current_city}
   my_data = my_hash.to_json
 end
 
