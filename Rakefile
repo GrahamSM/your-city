@@ -36,7 +36,6 @@ task "db:populate" do
   Vibe.create!(label: "Romantic")
   Vibe.create!(label: "Relaxing")
   Vibe.create!(label: "Rewarding")
-  Vibe.create!(label: "Stimulating")
   # 10.times do |i|
   #   City.first.spots << Spot.create!(title: Faker::Company.name, location: Faker::StarWars.planet, description: Faker::Hacker.say_something_smart, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
   # end

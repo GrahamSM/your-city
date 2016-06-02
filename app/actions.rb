@@ -38,7 +38,7 @@
 
   post '/city/:city/new' do
     @current_city = City.find_by(name: params[:city])
-    @spot = Spot.new(title: params[:title], location: params[:location], description: params[:description], city_id: @current_city.id, latitude: params[:lat], longitude: params[:long], category_id: params[:category_selection].to_i)
+    @spot = Spot.new(title: params[:title], location: params[:location], description: params[:description], city_id: @current_city.id, latitude: params[:lat].to_f, longitude: params[:long], category_id: params[:category_selection])
     if params[:vibe_one]
        @spot.vibes << Vibe.find_by(id: params[:vibe_one].to_i)
     end
@@ -48,19 +48,25 @@
     if params[:vibe_three]
       @spot.vibes << Vibe.find_by(id: params[:vibe_three].to_i)
     end
-    if @spot.save
+    if params[:vibe_four]
+      @spot.vibes << Vibe.find_by(id: params[:vibe_four].to_i)
+    end
+    if params[:file]
       @filename = "#{@spot.id}_spot_image.jpg"
       file_name = params["file"][:filename]
       File.open("./public/images/#{@filename}",'wb',) do |f|
         f.write(params["file"][:tempfile].read)
       end
       @spot.image = file_name
-      @current_city.spots << @spot
-      @current_city.save
+    else
       @spot.save
+      erb :'city/spot/new'
+    end
+    @current_city.spots << @spot
+    @current_city.save
+    if @spot.save
       @current_category = Category.find_by(id: params[:category_selection])
       redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
-
     else
       erb :'city/spot/new'
     end
@@ -108,6 +114,12 @@ get '/city_data' do
   @current_category = Category.find(params[:category].to_i)
   @current_spots = @current_city.spots
   my_hash = {city: @current_city, category: @current_category, spots: @current_spots}
+  my_data = my_hash.to_json
+end
+
+get '/city_data_new' do
+  @current_city = City.find(params[:city].to_i)
+  my_hash = {city: @current_city}
   my_data = my_hash.to_json
 end
 
