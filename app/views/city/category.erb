@@ -43,7 +43,7 @@
                             </form>
                           </div>
                           <div class="stat">
-                            <span class="score"><%=spot.num_votes || 0%>
+                            <span class="score" id = "spot_<%=spot.id%>"><%=spot.num_votes || 0%>
                             </span>
                           </div>
                           <div class="vote down">
@@ -93,6 +93,7 @@ $(function(){
     var filters = {};
     var gMarkers = [];
     var getData = function() {
+      // REMOVE ERB
       $.ajax({
         url:'/city_data?city=<%=@current_city.id%>&category=<%=@current_category.id%>',
         data: filters,
@@ -121,6 +122,7 @@ $(function(){
       });
     }
     var getSpotsInfo = function() {
+      // REMOVE ERB
       $.ajax({
         url: '/filtered_spots?city=<%=@current_city.id%>',
         data: filters,
@@ -174,9 +176,9 @@ $(function(){
         data: form.serialize()
       }).done(function(response_data) {
         // target.closest("stat")
-        $('.stat > .score').html(response_data.votes_count);
+        $('#spot_' + response_data.id.toString()).html(response_data.votes_count);
       })
-    }); ///FINISH THIS TOMORROW!!!
+    });
     function initMap() {
       getData()
     }

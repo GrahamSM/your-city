@@ -143,7 +143,7 @@ post '/:city/:category/upvote/spot/:id' do
   @current_category = Category.find_by(name: params[:category])
   @current_city = City.find_by(name: params[:city])
   # redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
-  { votes_count: @current_spot.num_votes }.to_json
+  { votes_count: @current_spot.num_votes, id: @current_spot.id }.to_json
 end
 
 post '/:city/:category/downvote/spot/:id' do
