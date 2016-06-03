@@ -134,30 +134,36 @@ end
 post '/:city/:category/upvote/spot/:id' do
   content_type :json
   @current_spot = Spot.find_by(id: params[:id])
-  if @current_spot.num_votes
-    @current_spot.num_votes += 1
-  else
-    @current_spot.num_votes = 1
+  @spot_user_entry = Spotsuser.new(user_id: current_user.id, spot_id: @current_spot.id)
+  if @spot_user_entry.save
+    if @current_spot.num_votes
+      @current_spot.num_votes += 1
+    else
+      @current_spot.num_votes = 1
+    end
+    @current_spot.save
+    @current_category = Category.find_by(name: params[:category])
+    @current_city = City.find_by(name: params[:city])
+    # redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
+    { votes_count: @current_spot.num_votes, id: @current_spot.id }.to_json
   end
-  @current_spot.save
-  @current_category = Category.find_by(name: params[:category])
-  @current_city = City.find_by(name: params[:city])
-  # redirect "/city?city=#{@current_city.id}&category=#{@current_category.id}"
-  { votes_count: @current_spot.num_votes, id: @current_spot.id }.to_json
 end
 
 post '/:city/:category/downvote/spot/:id' do
   content_type :json
   @current_spot = Spot.find_by(id: params[:id])
-  if @current_spot.num_votes
-    @current_spot.num_votes -= 1
-  else
-    @current_spot.num_votes = -1
+  @spot_user_entry = Spotsuser.new(user_id: current_user.id, spot_id: @current_spot.id)
+  if @spot_user_entry.save
+    if @current_spot.num_votes
+      @current_spot.num_votes -= 1
+    else
+      @current_spot.num_votes = -1
+    end
+    @current_spot.save
+    @current_category = Category.find_by(name: params[:category])
+    @current_city = City.find_by(name: params[:city])
+    { votes_count: @current_spot.num_votes, id: @current_spot.id }.to_json
   end
-  @current_spot.save
-  @current_category = Category.find_by(name: params[:category])
-  @current_city = City.find_by(name: params[:city])
-  { votes_count: @current_spot.num_votes, id: @current_spot.id }.to_json
 end
 
 get '/upvote' do

@@ -173,9 +173,13 @@ $(function(){
       $.ajax({
         url: form.attr('action'),
         type: 'POST',
-        data: form.serialize()
-      }).done(function(response_data) {
-        $('#spot_' + response_data.id.toString()).html(response_data.votes_count);
+        data: form.serialize(),
+        success: function(response_data){
+          $('#spot_' + response_data.id.toString()).html(response_data.votes_count);
+        },
+        error: function(){
+          alert("You can only vote once!");
+        }
       })
     });
     function initMap() {
