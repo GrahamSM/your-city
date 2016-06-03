@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521033848) do
+ActiveRecord::Schema.define(version: 20160603143511) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(version: 20160521033848) do
 
   add_index "spots_vibes", ["spot_id"], name: "index_spots_vibes_on_spot_id"
   add_index "spots_vibes", ["vibe_id"], name: "index_spots_vibes_on_vibe_id"
+
+  create_table "spotsusers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "spot_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
