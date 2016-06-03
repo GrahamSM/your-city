@@ -175,7 +175,6 @@ $(function(){
         type: 'POST',
         data: form.serialize()
       }).done(function(response_data) {
-        // target.closest("stat")
         $('#spot_' + response_data.id.toString()).html(response_data.votes_count);
       })
     });
