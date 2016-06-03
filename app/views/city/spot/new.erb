@@ -82,92 +82,91 @@
   </div>
 </div>
 
-
 <script>
-  function initMap() {
-    var city_data = {};
-    $.ajax({
-      url:'/city_data_new?city=<%=@current_city.id%>',
-      success: function(data){
-        parsed_data = JSON.parse(data)
-        city_lat = parseFloat(parsed_data.city.latitude)
-        city_lng = parseFloat(parsed_data.city.longitude)*(-1)
-        city_data.lat = city_lat
-        city_data.lng = city_lng
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: {lat: city_data.lat, lng: city_data.lng}
-        });
+function initMap() {
+  var city_data = {};
+  $.ajax({
+    url:'/city_data_new?city=<%=@current_city.id%>',
+    success: function(data){
+      parsed_data = JSON.parse(data)
+      city_lat = parseFloat(parsed_data.city.latitude)
+      city_lng = parseFloat(parsed_data.city.longitude)*(-1)
+      city_data.lat = city_lat
+      city_data.lng = city_lng
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: {lat: city_data.lat, lng: city_data.lng}
+      });
+      var geocoder = new google.maps.Geocoder();
+      document.getElementById('submit').addEventListener('click', function() {
+        geocodeAddress(geocoder, map);
+      });
+      document.getElementById('custom-add-btn').addEventListener('click', function(event){
+        event.preventDefault();
+        dropMarker(map);
+      });
+    }
+  });
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+      var long = marker.position.lng();
+      var lat = marker.position.lat();
+      $('#latitude').val(lat);
+      $('#longitude').val(long);
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+function dropMarker(resultsMap){
+  var infowindow = new google.maps.InfoWindow();
+  var marker_lat;
+  var marker_lng;
+  var city_data = {};
+  $.ajax({
+    url:'/city_data_new?city=<%=@current_city.id%>',
+    success: function(data){
+      parsed_data = JSON.parse(data)
+      city_lat = parseFloat(parsed_data.city.latitude)
+      city_lng = parseFloat(parsed_data.city.longitude)*(-1)
+      city_data.lat = city_lat
+      city_data.lng = city_lng
+      var marker = new google.maps.Marker({
+        position: {lat: city_data.lat, lng: city_data.lng},
+        map: resultsMap,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+      });
+      var long = marker.position.lng();
+      var lat = marker.position.lat();
+      google.maps.event.addListener(marker, 'dragend', function() {
         var geocoder = new google.maps.Geocoder();
-        document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
-        });
-        document.getElementById('custom-add-btn').addEventListener('click', function(event){
-          event.preventDefault();
-          dropMarker(map);
-        });
-      }
-    });
-  }
-
-  function geocodeAddress(geocoder, resultsMap) {
-    var address = document.getElementById('address').value;
-    geocoder.geocode({'address': address}, function(results, status) {
-      if (status === google.maps.GeocoderStatus.OK) {
-        resultsMap.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-        var long = marker.position.lng();
-        var lat = marker.position.lat();
-        $('#latitude').val(lat);
-        $('#longitude').val(long);
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
-
-  function dropMarker(resultsMap){
-    var infowindow = new google.maps.InfoWindow();
-    var marker_lat;
-    var marker_lng;
-    var city_data = {};
-    $.ajax({
-      url:'/city_data_new?city=<%=@current_city.id%>',
-      success: function(data){
-        parsed_data = JSON.parse(data)
-        city_lat = parseFloat(parsed_data.city.latitude)
-        city_lng = parseFloat(parsed_data.city.longitude)*(-1)
-        city_data.lat = city_lat
-        city_data.lng = city_lng
-        var marker = new google.maps.Marker({
-          position: {lat: city_data.lat, lng: city_data.lng},
-          map: resultsMap,
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-        });
-        var long = marker.position.lng();
-        var lat = marker.position.lat();
-        google.maps.event.addListener(marker, 'dragend', function() {
-          var geocoder = new google.maps.Geocoder();
-          geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                  $('#latitude').val(results[0].geometry.location.lat());
-                  $('#longitude').val(results[0].geometry.location.lng());
-                  infowindow.setContent(results[0].formatted_address + '</br>' + 'Location ready to be saved');
-                  infowindow.open(map, marker);
-                }
+        geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if (results[0]) {
+                $('#latitude').val(results[0].geometry.location.lat());
+                $('#longitude').val(results[0].geometry.location.lng());
+                infowindow.setContent(results[0].formatted_address + '</br>' + 'Location ready to be saved');
+                infowindow.open(map, marker);
               }
-          });
+            }
         });
-      }
-    });
-   }
-
+      });
+    }
+  });
+ }
 </script>
+
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxGn34Xr4JBNIC0xYNaK_I4G8_dc4cIMo&callback=initMap">
 </script>
